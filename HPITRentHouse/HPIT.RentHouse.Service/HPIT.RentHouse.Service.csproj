@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +50,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\RentHouseEntity.cs" />
+    <Compile Include="Entities\T_AdminUsers.cs" />
+    <Compile Include="Entities\T_Attachments.cs" />
+    <Compile Include="Entities\T_Cities.cs" />
+    <Compile Include="Entities\T_Communities.cs" />
+    <Compile Include="Entities\T_HouseAppointments.cs" />
+    <Compile Include="Entities\T_HousePics.cs" />
+    <Compile Include="Entities\T_Houses.cs" />
+    <Compile Include="Entities\T_IdNames.cs" />
+    <Compile Include="Entities\T_Permissions.cs" />
+    <Compile Include="Entities\T_Regions.cs" />
+    <Compile Include="Entities\T_Roles.cs" />
+    <Compile Include="Entities\T_Settings.cs" />
+    <Compile Include="Entities\T_Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
