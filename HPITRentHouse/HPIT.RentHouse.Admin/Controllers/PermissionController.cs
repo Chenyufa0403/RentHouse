@@ -10,10 +10,15 @@ namespace HPIT.RentHouse.Admin.Controllers
 {
     public class PermissionController : Controller
     {
+        private IPermissionService _permissionService;
+        public PermissionController(IPermissionService permissionService)
+        {
+            _permissionService = permissionService;
+        }
         public ActionResult Index()
         {
-            IPermissionService permissionsService = new PermissionService();
-            var list = permissionsService.GetList();
+            //IPermissionService permissionsService = new PermissionService();
+            var list = _permissionService.GetList();
             return View();
         }
     }
