@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseService.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
     <Compile Include="Entities\RentHouseEntity.cs" />
     <Compile Include="Entities\T_AdminUsers.cs" />
@@ -65,11 +66,22 @@
     <Compile Include="Entities\T_Roles.cs" />
     <Compile Include="Entities\T_Settings.cs" />
     <Compile Include="Entities\T_Users.cs" />
+    <Compile Include="PermissionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HPIT.RentHouse.DTO\HPIT.RentHouse.DTO.csproj">
+      <Project>{EC1C32FE-CE1D-4C02-A8EB-FF299A56B8EE}</Project>
+      <Name>HPIT.RentHouse.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HPIT.RentHouse.lService\HPIT.RentHouse.lService.csproj">
+      <Project>{3281A6A8-BC7C-4D49-B49B-DA92BB444410}</Project>
+      <Name>HPIT.RentHouse.lService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
