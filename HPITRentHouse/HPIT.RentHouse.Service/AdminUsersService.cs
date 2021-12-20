@@ -34,7 +34,7 @@ namespace HPIT.RentHouse.Service
                 PhoneNum = a.PhoneNum,
                 Email = a.Email,
                 LoginErrorTimes = a.LoginErrorTimes,
-                CityId = (long)a.CityId
+                CityId = a.T_Cities.Name
             }).ToList();
             return result;
         }

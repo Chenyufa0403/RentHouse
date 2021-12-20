@@ -13,6 +13,6 @@ namespace HPIT.RentHouse.DTO
         public string PhoneNum { get; set; }
         public string Email { get; set; }
         public int LoginErrorTimes { get; set; }
-        public long CityId { get; set; }
+        public string CityId { get; set; }
     }
 }
