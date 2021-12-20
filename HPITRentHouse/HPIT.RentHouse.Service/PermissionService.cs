@@ -1,4 +1,5 @@
-﻿using HPIT.RentHouse.DTO;
+﻿using HPIT.RentHouse.Common;
+using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.lService;
 using HPIT.RentHouse.Service.Entities;
 using System;
@@ -22,6 +23,24 @@ namespace HPIT.RentHouse.Service
                 Name = e.Name
             }).ToList();
             return list;
+        }
+        public List<PermissionDTO> GetPageList(int start, int length, string name, ref int count)
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_Permissions>(db);
+            var query = PredicateExtensions.True<T_Permissions>();
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.And(e => e.Name.Contains(name));
+            }
+            var list = bs.GetPagedList(start, length, ref count, query, a => a.Id);
+            var result = list.Select(a => new PermissionDTO
+            {
+                Id = a.Id,
+                Name = a.Name,
+                Description = a.Description
+            }).ToList();
+            return result;
         }
     }
 }
