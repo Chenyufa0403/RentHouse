@@ -31,12 +31,11 @@
             <table class="table table-border table-bordered table-bg" id="table">
                 <thead>
                     <tr>
-                        <th scope="col" colspan="7">权限列表</th>
+                        <th scope="col" colspan="7">角色列表</th>
                     </tr>
                     <tr class="text-c">
                         <th width="25"><input type="checkbox" value="" id="checkall"></th>
-                        <th width="40">权限名称</th>
-                        <th width="200">权限描述</th>
+                        <th width="40">角色名称</th>
                         <th width="70">操作</th>
                     </tr>
                 </thead>
@@ -74,7 +73,6 @@
                 columns: [
                     { data: '' },//设置单元格里的值
                     { data: 'Name' },
-                    { data: 'Description' },
                     {
                         data: 'Id',
                         render: function (data, type, full, callback) {
@@ -100,7 +98,7 @@
                 //使用ajax异步请求
                 ajax: {
                     type: 'POST',
-                    url: '@Url.Action("GetList", "Permission")',
+                    url: '@Url.Action("GetList", "Roles")',
                     //发送给服务器的数据
                     data: function (d) {
                         console.log(d)

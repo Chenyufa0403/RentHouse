@@ -491,8 +491,10 @@
     <Compile Include="Content\ueditor\1.4.3\net\App_Code\NotSupportedHandler.cs" />
     <Compile Include="Content\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
     <Compile Include="Content\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
+    <Compile Include="Controllers\AdminUsersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PermissionController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1048,6 +1050,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Permission\Index.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\AdminUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
