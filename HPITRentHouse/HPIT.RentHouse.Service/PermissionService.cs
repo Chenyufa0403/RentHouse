@@ -42,5 +42,23 @@ namespace HPIT.RentHouse.Service
             }).ToList();
             return result;
         }
+        public AjaxResult Add(PermissionDTO permission)
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_Permissions>(db);
+            T_Permissions permissions = new T_Permissions();
+            permissions.Name = permission.Name;
+            permissions.Description = permission.Description;
+            permissions.CreateDateTime = DateTime.Now;
+            long id = bs.Add(permissions);
+            if (id > 0)
+            {
+                return new AjaxResult(ResultState.Success, "管理员添加成功");
+            }
+            else
+            {
+                return new AjaxResult(ResultState.Error, "管理员添加失败");
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HPIT.RentHouse.Admin.Models;
+using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.lService;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,16 @@ namespace HPIT.RentHouse.Admin.Controllers
             pageModel.recordsTotal = count;
             pageModel.recordsFiltered = count;
             return Json(pageModel);
+        }
+        public ActionResult Add()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Add_Role(RolesDTO roles)
+        {
+            var add = _rolesService.Add(roles);
+            return Json(add);
         }
     }
 }

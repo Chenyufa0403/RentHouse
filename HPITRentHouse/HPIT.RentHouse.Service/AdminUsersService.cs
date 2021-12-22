@@ -38,5 +38,32 @@ namespace HPIT.RentHouse.Service
             }).ToList();
             return result;
         }
+        public AjaxResult Add(AdminUsersDTO admin)
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_AdminUsers>(db);
+            T_AdminUsers users = new T_AdminUsers()
+            {
+                Id = admin.Id,
+                Name = admin.Name,
+                PhoneNum = admin.PhoneNum,
+                PasswordHash = admin.PasswordHash,
+                PasswordSalt = admin.PasswordSalt,
+                Email = admin.Email,
+                LoginErrorTimes = admin.LoginErrorTimes,
+                LastLoginErrorDateTime = DateTime.Now,
+                CityId = Convert.ToInt32(admin.CityId),
+                CreateDateTime = DateTime.Now
+            };
+            long id = bs.Add(users);
+            if (id > 0)
+            {
+                return new AjaxResult(ResultState.Success, "管理员添加成功");
+            }
+            else
+            {
+                return new AjaxResult(ResultState.Error, "管理员添加失败");
+            }
+        }
     }
 }

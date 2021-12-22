@@ -1052,6 +1052,10 @@
     <Content Include="Views\Permission\Index.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\AdminUsers\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Permission\Add.cshtml" />
+    <Content Include="Views\AdminUsers\Add.cshtml" />
+    <Content Include="Views\Roles\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1070,6 +1074,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HPIT.RentHouse.Common\HPIT.RentHouse.Common.csproj">
+      <Project>{35227A52-8FC8-48E9-ABC9-EB7BF6C6EB24}</Project>
+      <Name>HPIT.RentHouse.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HPIT.RentHouse.DTO\HPIT.RentHouse.DTO.csproj">
       <Project>{EC1C32FE-CE1D-4C02-A8EB-FF299A56B8EE}</Project>
       <Name>HPIT.RentHouse.DTO</Name>

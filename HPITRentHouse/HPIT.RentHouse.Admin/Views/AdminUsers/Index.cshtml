@@ -23,8 +23,8 @@
                     <a href="javascript:;" id="deleteBatch" class="btn btn-danger radius">
                         <i class="Hui-iconfont">&#xe6e2;</i> 批量删除
                     </a>
-                    <a href="javascript:;" class="btn btn-primary radius" id="btn_Add">
-                        <i class="Hui-iconfont">&#xe600;</i> 添加用户
+                    <a href="javascript:;" onclick='admin_user("添加管理员","@Url.Action("Add", "AdminUsers")","700")' class="btn btn-primary radius" id="btn_Add">
+                        <i class="Hui-iconfont">&#xe600;</i> 添加管理员
                     </a>
                 </span>
             </div>
@@ -59,7 +59,9 @@
 
             getData();
         })
-
+        function admin_user(title, url, w, h) {
+            layer_show(title, url, w, h);
+        }
         //获取分页数据,通过datatalbe渲染列表
         var table;
         function getData() {

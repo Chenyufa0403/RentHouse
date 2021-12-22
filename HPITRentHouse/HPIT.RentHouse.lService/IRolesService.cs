@@ -1,4 +1,5 @@
-﻿using HPIT.RentHouse.DTO;
+﻿using HPIT.RentHouse.Common;
+using HPIT.RentHouse.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace HPIT.RentHouse.lService
     {
         List<RolesDTO> GetList();
         List<RolesDTO> GetPageList(int start, int length, string name, ref int count);
+        AjaxResult Add(RolesDTO roles);
     }
 }
