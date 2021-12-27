@@ -23,7 +23,7 @@
                     <a href="javascript:;" id="deleteBatch" class="btn btn-danger radius">
                         <i class="Hui-iconfont">&#xe6e2;</i> 批量删除
                     </a>
-                    <a href="javascript:;" onclick='per_add("添加权限节点","@Url.Action("Add", "Permission")","700")' class="btn btn-primary radius" id="btn_Add">
+                    <a href="javascript:;" onclick='per_add("添加权限节点","@Url.Action("Add", "Permissions")","700")' class="btn btn-primary radius" id="btn_Add">
                         <i class="Hui-iconfont">&#xe600;</i> 添加权限节点
                     </a>
                 </span>
@@ -102,7 +102,7 @@
                 //使用ajax异步请求
                 ajax: {
                     type: 'POST',
-                    url: '@Url.Action("GetList", "Permission")',
+                    url: '@Url.Action("GetList", "Permissions")',
                     //发送给服务器的数据
                     data: function (d) {
                         console.log(d)
@@ -122,7 +122,7 @@
         });
         $(".edit").livequery('click', function () {
             var id = $(this).attr("data-id");
-            layer_show("修改权限", "@Url.Action("Edit", "Permission")?id=" + id, "800","500")
+            layer_show("修改权限", "@Url.Action("Edit", "Permissions")?id=" + id, "800","500")
         });
     </script>
 }

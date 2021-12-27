@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HPIT.RentHouse.Service
 {
-    public class PermissionService : IPermissionService
+    public class PermissionsService : IPermissionsService
     {
         public List<PermissionDTO> GetList()
         {

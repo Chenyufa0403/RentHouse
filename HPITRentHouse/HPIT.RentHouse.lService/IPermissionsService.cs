@@ -8,7 +8,7 @@ using HPIT.RentHouse.DTO;
 
 namespace HPIT.RentHouse.lService
 {
-    public interface IPermissionService : IServiceSupport
+    public interface IPermissionsService : IServiceSupport
     {
         List<PermissionDTO> GetList();
         List<PermissionDTO> GetPageList(int start, int length, string name, ref int count);

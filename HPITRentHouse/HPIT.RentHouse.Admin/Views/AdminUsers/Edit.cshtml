@@ -41,6 +41,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">城市编号：</label>
             <div class="formControls col-xs-8 col-sm-9">
+                @*@Html.DropDownListFor(model => model.CityId, ViewBag.city as List<SelectListItem>, new { @class = "form-control" })*@
                 <span class="select-box" style="width:150px;">
                     <select class="select" name="CityId" size="1">
                         <option value="1">郑州</option>

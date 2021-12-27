@@ -84,17 +84,19 @@ namespace HPIT.RentHouse.Service
             }
             return dto;
         }
+
         public AjaxResult Edit(AdminUsersDTO adminUsers)
         {
             var db = new RentHouseEntity();
             BaseService<T_AdminUsers> bs = new BaseService<T_AdminUsers>(db);
             var model = bs.Get(a => a.Id == adminUsers.Id);
+
             model.Name = adminUsers.Name;
             model.LoginErrorTimes = adminUsers.LoginErrorTimes;
             model.PasswordHash = adminUsers.PasswordHash;
             model.PasswordSalt = adminUsers.PasswordSalt;
             model.PhoneNum = adminUsers.PhoneNum;
-            model.CityId = adminUsers.CityId.Length;
+            model.CityId = Convert.ToInt32(adminUsers.CityId);
             model.Email = adminUsers.Email;
             bool res = bs.Update(model);
             if (res)
@@ -105,6 +107,7 @@ namespace HPIT.RentHouse.Service
             {
                 return new AjaxResult(ResultState.Error, "管理员修改失败");
             }
+
         }
     }
 }
