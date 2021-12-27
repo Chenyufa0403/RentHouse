@@ -63,5 +63,21 @@ namespace HPIT.RentHouse.Service
             }
             return dto;
         }
+        public AjaxResult Edit(RolesDTO roles)
+        {
+            var db = new RentHouseEntity();
+            BaseService<T_Roles> bs = new BaseService<T_Roles>(db);
+            var model = bs.Get(a => a.Id == roles.Id);
+            model.Name = roles.Name;
+            bool res = bs.Update(model);
+            if (res)
+            {
+                return new AjaxResult(ResultState.Success, "角色修改成功");
+            }
+            else
+            {
+                return new AjaxResult(ResultState.Error, "角色修改失败");
+            }
+        }
     }
 }

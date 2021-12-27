@@ -73,5 +73,22 @@ namespace HPIT.RentHouse.Service
             }
             return dto;
         }
+        public AjaxResult Edit(PermissionDTO permission)
+        {
+            var db = new RentHouseEntity();
+            BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);
+            var model = bs.Get(a => a.Id == permission.Id);
+            model.Name = permission.Name;
+            model.Description = permission.Description;
+            bool res = bs.Update(model);
+            if (res)
+            {
+                return new AjaxResult(ResultState.Success, "权限修改成功");
+            }
+            else
+            {
+                return new AjaxResult(ResultState.Error, "权限修改失败");
+            }
+        }
     }
 }

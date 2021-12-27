@@ -44,8 +44,15 @@ namespace HPIT.RentHouse.Admin.Controllers
         }
         public ActionResult Edit(long id)
         {
-            var model = _adminUsersService.Edit(id);
-            return View(model);
+            AdminUsersDTO dto = _adminUsersService.Edit(id);
+            return View(dto);
+        }
+        [HttpPost]
+        public ActionResult Edit_Per(AdminUsersDTO adminUsers)
+        {
+
+            var ad = _adminUsersService.Edit(adminUsers);
+            return Json(ad);
         }
     }
 }

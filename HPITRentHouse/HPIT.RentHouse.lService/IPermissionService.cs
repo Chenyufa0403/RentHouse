@@ -14,5 +14,6 @@ namespace HPIT.RentHouse.lService
         List<PermissionDTO> GetPageList(int start, int length, string name, ref int count);
         AjaxResult Add(PermissionDTO permission);
         PermissionDTO Edit(long id);
+        AjaxResult Edit(PermissionDTO permission);
     }
 }

@@ -1,40 +1,41 @@
-﻿@*@using HPIT.RentHouse.Admin.Controllers;
-    @model AdminUsersController*@
+﻿@using HPIT.RentHouse.DTO
+@model AdminUsersDTO
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
 <article class="cl pd-20">
-    <form action="@Url.Action("Edit_AdminUser","AdminUsers")" method="post" class="form form-horizontal" id="form-admin-add">
+    <form action="@Url.Action("Edit_Per","AdminUsers")" method="post" class="form form-horizontal" id="form-admin-add">
+        @Html.HiddenFor(model => model.Id)
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>管理员名字：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="Name" name="Name">
+                <input type="text" class="input-text" value="@Model.Name" placeholder="" id="Name" name="Name">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>手机：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="PhoneNum" name="PhoneNum">
+                <input type="text" class="input-text" value="@Model.PhoneNum" placeholder="" id="PhoneNum" name="PhoneNum">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>初始密码：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="password" class="input-text" autocomplete="off" value="" placeholder="密码" id="PasswordHash" name="PasswordHash">
+                <input type="password" class="input-text" autocomplete="off" value="@Model.PasswordHash" placeholder="密码" id="PasswordHash" name="PasswordHash">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>确认密码：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="password" class="input-text" autocomplete="off" placeholder="确认新密码" id="PasswordSalt" name="PasswordSalt">
+                <input type="password" class="input-text" autocomplete="off" value="@Model.PasswordSalt" placeholder="确认新密码" id="PasswordSalt" name="PasswordSalt">
             </div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" placeholder="" name="Email" id="Email">
+                <input type="text" class="input-text" value="@Model.Email" placeholder="" name="Email" id="Email">
             </div>
         </div>
         <div class="row cl">
@@ -42,9 +43,9 @@
             <div class="formControls col-xs-8 col-sm-9">
                 <span class="select-box" style="width:150px;">
                     <select class="select" name="CityId" size="1">
-                        <option value="0">郑州</option>
-                        <option value="1">洛阳</option>
-                        <option value="2">南阳</option>
+                        <option value="1">郑州</option>
+                        <option value="2">洛阳</option>
+                        <option value="3">南阳</option>
                     </select>
                 </span>
             </div>
@@ -52,7 +53,7 @@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>错误次数：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" placeholder="" name="LoginErrorTimes" id="LoginErrorTimes">
+                <input type="text" class="input-text" value="@Model.LoginErrorTimes" placeholder="" name="LoginErrorTimes" id="LoginErrorTimes">
             </div>
         </div>
         <div class="row cl">

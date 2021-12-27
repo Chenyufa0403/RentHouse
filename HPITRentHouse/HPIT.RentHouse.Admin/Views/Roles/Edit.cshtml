@@ -1,16 +1,17 @@
-﻿@*@using HPIT.RentHouse.Admin.Controllers;
-    @model RolesController*@
+﻿@using HPIT.RentHouse.DTO;
+@model RolesDTO
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
 <article class="cl pd-20">
-    <form action="@Url.Action("Edit_Role","Roles")" method="post" class="form form-horizontal" id="form-admin-add">
+    <form action="@Url.Action("Edit_Per","Roles")" method="post" class="form form-horizontal" id="form-admin-add">
+        @Html.HiddenFor(model => model.Id)
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名字：</label>
             <div class="formControls col-xs-8 col-sm-9">
-                <input type="text" class="input-text" value="" placeholder="" id="Name" name="Name">
+                <input type="text" class="input-text" value="@Model.Name" placeholder="" id="Name" name="Name">
             </div>
         </div>
         <div class="row cl">
