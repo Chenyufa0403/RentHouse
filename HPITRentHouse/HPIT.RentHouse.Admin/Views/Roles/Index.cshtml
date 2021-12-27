@@ -117,6 +117,10 @@
         $("#btn_Search").click(function () {
             //使datatable重新请求
             table.ajax.reload();
-        })
+        });
+        $(".edit").livequery('click', function () {
+            var id = $(this).attr("data-id");
+            layer_show("修改角色", "@Url.Action("Edit", "Roles")?id=" + id, "800","500")
+        });
     </script>
 }

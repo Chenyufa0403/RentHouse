@@ -42,5 +42,10 @@ namespace HPIT.RentHouse.Admin.Controllers
             var add = _adminUsersService.Add(admin);
             return Json(add);
         }
+        public ActionResult Edit(long id)
+        {
+            var model = _adminUsersService.Edit(id);
+            return View(model);
+        }
     }
 }

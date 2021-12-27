@@ -44,5 +44,10 @@ namespace HPIT.RentHouse.Admin.Controllers
             var add = _rolesService.Add(roles);
             return Json(add);
         }
+        public ActionResult Edit(long id)
+        {
+            var model = _rolesService.Edit(id);
+            return View(model);
+        }
     }
 }

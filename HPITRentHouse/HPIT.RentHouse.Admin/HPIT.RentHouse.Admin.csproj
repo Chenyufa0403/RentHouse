@@ -516,6 +516,7 @@
     <Content Include="Content\h-ui\lib\jquery.validation\1.14.0\messages_zh.js" />
     <Content Include="Content\h-ui\lib\jquery.validation\1.14.0\validate-methods.js" />
     <Content Include="Content\h-ui\lib\jquery\1.9.1\jquery.min.js" />
+    <Content Include="Content\h-ui\lib\jquery\jquery.livequery.js" />
     <Content Include="Content\h-ui\lib\layer\2.4\layer.js" />
     <Content Include="Content\h-ui\lib\layer\2.4\skin\default\icon.png" />
     <Content Include="Content\h-ui\lib\layer\2.4\skin\default\loading-0.gif" />
@@ -1056,6 +1057,9 @@
     <Content Include="Views\Permission\Add.cshtml" />
     <Content Include="Views\AdminUsers\Add.cshtml" />
     <Content Include="Views\Roles\Add.cshtml" />
+    <Content Include="Views\Permission\Edit.cshtml" />
+    <Content Include="Views\AdminUsers\Edit.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

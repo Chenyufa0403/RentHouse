@@ -51,5 +51,10 @@ namespace HPIT.RentHouse.Admin.Controllers
             var ad = _permissionService.Add(permission);
             return Json(ad);
         }
+        public ActionResult Edit(long id)
+        {
+            var model = _permissionService.Edit(id);
+            return View(model);
+        }
     }
 }

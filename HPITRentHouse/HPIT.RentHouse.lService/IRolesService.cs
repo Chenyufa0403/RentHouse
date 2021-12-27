@@ -13,5 +13,6 @@ namespace HPIT.RentHouse.lService
         List<RolesDTO> GetList();
         List<RolesDTO> GetPageList(int start, int length, string name, ref int count);
         AjaxResult Add(RolesDTO roles);
+        RolesDTO Edit(long id);
     }
 }

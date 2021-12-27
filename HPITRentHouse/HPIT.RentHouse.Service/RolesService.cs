@@ -10,7 +10,7 @@ using HPIT.RentHouse.lService;
 
 namespace HPIT.RentHouse.Service
 {
-    public class RolesService:IRolesService
+    public class RolesService : IRolesService
     {
         public List<RolesDTO> GetList()
         {
@@ -50,6 +50,18 @@ namespace HPIT.RentHouse.Service
             {
                 return new AjaxResult(ResultState.Error, "管理员添加失败");
             }
+        }
+        public RolesDTO Edit(long id)
+        {
+            var db = new RentHouseEntity();
+            BaseService<T_Roles> bs = new BaseService<T_Roles>(db);
+            T_Roles model = bs.Get(a => a.Id == id);//少了个等于号，一个等于号是赋值，两个等于号是变量比较
+            RolesDTO dto = new RolesDTO();
+            if (model != null)
+            {
+                dto.Name = model.Name;
+            }
+            return dto;
         }
     }
 }

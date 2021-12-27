@@ -60,5 +60,18 @@ namespace HPIT.RentHouse.Service
                 return new AjaxResult(ResultState.Error, "管理员添加失败");
             }
         }
+        public PermissionDTO Edit(long id)
+        {
+            var db = new RentHouseEntity();
+            BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);
+            T_Permissions model = bs.Get(a => a.Id == id);//少了个等于号，一个等于号是赋值，两个等于号是变量比较
+            PermissionDTO dto = new PermissionDTO();
+            if (model != null)
+            {
+                dto.Name = model.Name;
+                dto.Description = model.Description;
+            }
+            return dto;
+        }
     }
 }
