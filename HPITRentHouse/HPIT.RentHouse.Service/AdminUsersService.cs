@@ -109,5 +109,17 @@ namespace HPIT.RentHouse.Service
             }
 
         }
+
+        public List<CitiesDTO> CityList()
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_Cities>(db);
+            var list = bs.GetList(e => true).Select(e => new CitiesDTO
+            {
+                Id = e.Id,
+                Name = e.Name
+            }).ToList();
+            return list;
+        }
     }
 }

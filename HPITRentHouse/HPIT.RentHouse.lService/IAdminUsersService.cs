@@ -15,5 +15,6 @@ namespace HPIT.RentHouse.lService
         AjaxResult Add(AdminUsersDTO admin);
         AdminUsersDTO Edit(long id);
         AjaxResult Edit(AdminUsersDTO admin);
+        List<CitiesDTO> CityList();
     }
 }

@@ -45,6 +45,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         public ActionResult Edit(long id)
         {
             AdminUsersDTO dto = _adminUsersService.Edit(id);
+            ViewBag.CityList = _adminUsersService.CityList();
             return View(dto);
         }
         [HttpPost]
