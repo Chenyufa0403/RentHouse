@@ -12,6 +12,10 @@ namespace HPIT.RentHouse.Service
 {
     public class PermissionsService : IPermissionsService
     {
+        /// <summary>
+        /// 查询权限
+        /// </summary>
+        /// <returns></returns>
         public List<PermissionDTO> GetList()
         {
             var db = new RentHouseEntity();
@@ -24,6 +28,14 @@ namespace HPIT.RentHouse.Service
             }).ToList();
             return list;
         }
+        /// <summary>
+        /// 查询权限列表
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="length"></param>
+        /// <param name="name"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         public List<PermissionDTO> GetPageList(int start, int length, string name, ref int count)
         {
             var db = new RentHouseEntity();
@@ -42,6 +54,11 @@ namespace HPIT.RentHouse.Service
             }).ToList();
             return result;
         }
+        /// <summary>
+        /// 添加权限节点
+        /// </summary>
+        /// <param name="permission"></param>
+        /// <returns></returns>
         public AjaxResult Add(PermissionDTO permission)
         {
             var db = new RentHouseEntity();
@@ -60,6 +77,11 @@ namespace HPIT.RentHouse.Service
                 return new AjaxResult(ResultState.Error, "管理员添加失败");
             }
         }
+        /// <summary>
+        /// 查询修改权限id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public PermissionDTO Edit(long id)
         {
             var db = new RentHouseEntity();
@@ -73,6 +95,11 @@ namespace HPIT.RentHouse.Service
             }
             return dto;
         }
+        /// <summary>
+        /// 修改权限
+        /// </summary>
+        /// <param name="permission"></param>
+        /// <returns></returns>
         public AjaxResult Edit(PermissionDTO permission)
         {
             var db = new RentHouseEntity();
@@ -88,6 +115,48 @@ namespace HPIT.RentHouse.Service
             else
             {
                 return new AjaxResult(ResultState.Error, "权限修改失败");
+            }
+        }
+        /// <summary>
+        /// 删除权限
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public AjaxResult Delete(long id)
+        {
+            var db = new RentHouseEntity();
+            BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);
+            var model = bs.Get(p => p.Id == id);
+            if (bs.Delete(model))
+            {
+                return new AjaxResult(ResultState.Success, "权限删除成功");
+            }
+            else
+            {
+                return new AjaxResult(ResultState.Error, "权限删除失败");
+            }
+        }
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public AjaxResult DeleteBatch(List<long> ids)
+        {
+            try
+            {
+                var db = new RentHouseEntity();
+                BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);
+                foreach (var id in ids)
+                {
+                    var model = bs.Get(p => p.Id == id);
+                    bs.Delete(model);
+                }
+                return new AjaxResult(ResultState.Success, "权限删除成功");
+            }
+            catch (Exception)
+            {
+                return new AjaxResult(ResultState.Error, "权限删除失败");
             }
         }
     }

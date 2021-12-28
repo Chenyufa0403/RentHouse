@@ -10,10 +10,50 @@ namespace HPIT.RentHouse.lService
 {
     public interface IPermissionsService : IServiceSupport
     {
+        /// <summary>
+        /// 查询权限
+        /// </summary>
+        /// <returns></returns>
         List<PermissionDTO> GetList();
+        /// <summary>
+        /// 查询权限列表
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="length"></param>
+        /// <param name="name"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
         List<PermissionDTO> GetPageList(int start, int length, string name, ref int count);
+        /// <summary>
+        /// 添加权限节点
+        /// </summary>
+        /// <param name="permission"></param>
+        /// <returns></returns>
         AjaxResult Add(PermissionDTO permission);
+        /// <summary>
+        /// 查询修改权限id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         PermissionDTO Edit(long id);
+        /// <summary>
+        /// 修改权限
+        /// </summary>
+        /// <param name="permission"></param>
+        /// <returns></returns>
         AjaxResult Edit(PermissionDTO permission);
+        /// <summary>
+        /// 删除权限
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        AjaxResult Delete(long id);
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        AjaxResult DeleteBatch(List<long> ids);
+
     }
 }

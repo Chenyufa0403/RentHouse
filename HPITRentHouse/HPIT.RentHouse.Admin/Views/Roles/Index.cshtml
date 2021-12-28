@@ -20,9 +20,9 @@
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20">
                 <span class="l">
-                    @*<a href="javascript:;" id="deleteBatch" class="btn btn-danger radius">
-                            <i class="Hui-iconfont">&#xe6e2;</i> 批量删除
-                        </a>*@
+                    <a href="javascript:;" id="deleteBatch" class="btn btn-danger radius">
+                        <i class="Hui-iconfont">&#xe6e2;</i> 批量删除
+                    </a>
                     <a href="javascript:;" onclick='role_add("添加角色","@Url.Action("Add", "Roles")","700")' class="btn btn-primary radius" id="btn_Add">
                         <i class="Hui-iconfont">&#xe600;</i> 添加角色
                     </a>
@@ -87,7 +87,7 @@
                 columnDefs: [{
                     targets: 0,//列的索引，从0开始
                     render: function (data, type, row, meta) {
-                        return '<input type="checkbox" value="' + row.Id + '" name="selectIDs">';
+                        return '<input type="checkbox" class="chk" value="' + row.Id + '" name="selectIDs">';
                     }
                 }],
 
@@ -118,9 +118,55 @@
             //使datatable重新请求
             table.ajax.reload();
         });
+        //修改
         $(".edit").livequery('click', function () {
             var id = $(this).attr("data-id");
             layer_show("修改角色", "@Url.Action("Edit", "Roles")?id=" + id, "800","500")
+        });
+        //删除
+        $(".delete").livequery('click', function () {
+            var id = $(this).attr("data-id");
+            layer.confirm('确认删除该数据?', { icon: 3, title: '提示' }, function
+                (index) {
+                $.post("@Url.Action("Delete", "Roles")", { id: id }, function
+                    (data) {
+                    if (data.State == 1) {
+                        location.reload();
+                    } else {
+                        layer.msg(data.ErrorMessage, { icon: 2 });
+                    }
+                })
+            });
+        });
+        //批量删除
+        $("#deleteBatch").click(function () {
+            var ids = [];
+            $(":checkbox[name='selectIDs']:checked").each(function () {
+                var id = $(this).val();
+                ids.push(id);
+            })
+            if (ids.length == 0) {
+                layer.msg("请选择要删除的项");
+                return;
+            }
+            layer.confirm("确认是否删除", { icon: 3, title: "删除提示" }, function () {
+                $.post("@Url.Action("DeleteBatch", "Roles")", { ids: ids },
+                    function (data) {
+                        if (data.State == 1) {
+                            location.reload();
+                        } else {
+                            layer.msg(data.ErrorMessage, { icon: 2 });
+                        }
+                    })
+            })
+        });
+        //全选
+        $("#checkall").click(function () {
+            $(".chk").prop("checked", this.checked)
+        });
+        $(".chk").click(function () {
+            var checkAll = $(".chk").length == $(".chk:checked").length ? true : false
+            $("#checkall").prop("checked", checkAll)
         });
     </script>
 }

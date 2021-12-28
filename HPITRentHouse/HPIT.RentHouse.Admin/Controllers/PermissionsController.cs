@@ -23,12 +23,23 @@ namespace HPIT.RentHouse.Admin.Controllers
         //    IPermissionService permissionsService = new PermissionService();
         //    return View();
         //}
+        /// <summary>
+        /// 查询权限
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             //IPermissionService permissionsService = new PermissionService();
             var list = _permissionsService.GetList();
             return View();
         }
+        /// <summary>
+        /// 查询权限列表
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="length"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public ActionResult GetList(int start, int length, string name)
         {
             //int start = 0;
@@ -42,39 +53,67 @@ namespace HPIT.RentHouse.Admin.Controllers
             pageModel.recordsFiltered = count;
             return Json(pageModel);
         }
+        /// <summary>
+        /// 添加权限
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Add()
         {
             return View();
         }
+        /// <summary>
+        /// 添加权限节点
+        /// </summary>
+        /// <param name="permission"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Add_Per(PermissionDTO permission)
         {
-            var ad = _permissionsService.Add(permission);
-            return Json(ad);
+            var result = _permissionsService.Add(permission);
+            return Json(result);
         }
+        /// <summary>
+        /// 查询修改权限id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Edit(long id)
         {
             PermissionDTO dto = _permissionsService.Edit(id);
             return View(dto);
         }
-        //private List<SelectListItem> CityName()
-        //{
-        //    using (var db = new RentHouseEntity())
-        //    {
-        //        var ty = db.T_Cities.Select(t => new SelectListItem()
-        //        {
-        //            Text = t.Name,
-        //            Value = t.Id.ToString()
-        //        }).ToList();
-        //        return ty;
-        //    }
-        //}
+        /// <summary>
+        /// 修改权限
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Edit_Per(PermissionDTO dto)
         {
-            //ViewBag.city = CityName();
-            var ad = _permissionsService.Edit(dto);
-            return Json(ad);
+            var result = _permissionsService.Edit(dto);
+            return Json(result);
+        }
+        /// <summary>
+        /// 删除权限
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult Delete(long id)
+        {
+            var result = _permissionsService.Delete(id);
+            return Json(result);
+        }
+        /// <summary>
+        /// 批量删除
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult DeleteBatch(List<long> ids)
+        {
+            var result = _permissionsService.DeleteBatch(ids);
+            return Json(result);
         }
     }
 }
