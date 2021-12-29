@@ -50,13 +50,22 @@ namespace HPIT.RentHouse.Service
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        public AjaxResult Add(RolesDTO roles)
+        public AjaxResult Add(RolesEditDTO roles)
         {
             var db = new RentHouseEntity();
             var bs = new BaseService<T_Roles>(db);
-            T_Roles role = new T_Roles();
+            var bsp = new BaseService<T_Permissions>(db);
+            var role = new T_Roles();
             role.Name = roles.Name;
             role.CreateDateTime = DateTime.Now;
+            if (roles.PermissionsIds != null && roles.PermissionsIds.Count > 0)
+            {
+                foreach (var ids in roles.PermissionsIds)
+                {
+                    T_Permissions permissions = bsp.Get(p => p.Id == ids);
+                    role.T_Permissions.Add(permissions);
+                }
+            }
             long id = bs.Add(role);
             if (id > 0)
             {
@@ -89,12 +98,22 @@ namespace HPIT.RentHouse.Service
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        public AjaxResult Edit(RolesDTO roles)
+        public AjaxResult Edit(RolesEditDTO roles)
         {
             var db = new RentHouseEntity();
             BaseService<T_Roles> bs = new BaseService<T_Roles>(db);
+            var bsp = new BaseService<T_Permissions>(db);
             var model = bs.Get(a => a.Id == roles.Id);
             model.Name = roles.Name;
+            model.T_Permissions.Clear();
+            if (roles.PermissionsIds != null && roles.PermissionsIds.Count > 0)
+            {
+                foreach (var ids in roles.PermissionsIds)
+                {
+                    T_Permissions permissions = bsp.Get(p => p.Id == ids);
+                    model.T_Permissions.Add(permissions);
+                }
+            }
             bool res = bs.Update(model);
             if (res)
             {

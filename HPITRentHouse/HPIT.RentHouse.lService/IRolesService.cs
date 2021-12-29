@@ -29,7 +29,7 @@ namespace HPIT.RentHouse.lService
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        AjaxResult Add(RolesDTO roles);
+        AjaxResult Add(RolesEditDTO roles);
         /// <summary>
         /// 查询角色id
         /// </summary>
@@ -41,7 +41,7 @@ namespace HPIT.RentHouse.lService
         /// </summary>
         /// <param name="roles"></param>
         /// <returns></returns>
-        AjaxResult Edit(RolesDTO roles);
+        AjaxResult Edit(RolesEditDTO roles);
         /// <summary>
         /// 删除角色
         /// </summary>

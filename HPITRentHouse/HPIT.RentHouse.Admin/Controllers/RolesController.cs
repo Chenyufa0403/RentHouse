@@ -12,8 +12,10 @@ namespace HPIT.RentHouse.Admin.Controllers
     public class RolesController : Controller
     {
         private IRolesService _rolesService;
-        public RolesController(IRolesService rolesService)
+        private IPermissionsService _permissionsService;
+        public RolesController(IRolesService rolesService, IPermissionsService permissionsService)
         {
+            _permissionsService = permissionsService;
             _rolesService = rolesService;
         }
         /// <summary>
@@ -50,6 +52,8 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
+            var per = _permissionsService.GetList();
+            ViewBag.perList = per;
             return View();
         }
         /// <summary>
@@ -58,7 +62,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <param name="roles"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Add_Role(RolesDTO roles)
+        public ActionResult Add_Role(RolesEditDTO roles)
         {
             var result = _rolesService.Add(roles);
             return Json(result);
@@ -70,6 +74,8 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <returns></returns>
         public ActionResult Edit(long id)
         {
+            var per = _permissionsService.GetList();
+            ViewBag.perList = per;
             RolesDTO dto = _rolesService.Edit(id);
             return View(dto);
         }
@@ -79,7 +85,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <param name="roles"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Edit_Per(RolesDTO roles)
+        public ActionResult Edit_Per(RolesEditDTO roles)
         {
             var result = _rolesService.Edit(roles);
             return Json(result);

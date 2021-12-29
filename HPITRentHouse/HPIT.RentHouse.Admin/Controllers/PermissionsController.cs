@@ -67,7 +67,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <param name="permission"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Add_Per(PermissionDTO permission)
+        public ActionResult Add_Per(PermissionsDTO permission)
         {
             var result = _permissionsService.Add(permission);
             return Json(result);
@@ -79,7 +79,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <returns></returns>
         public ActionResult Edit(long id)
         {
-            PermissionDTO dto = _permissionsService.Edit(id);
+            PermissionsDTO dto = _permissionsService.Edit(id);
             return View(dto);
         }
         /// <summary>
@@ -88,7 +88,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Edit_Per(PermissionDTO dto)
+        public ActionResult Edit_Per(PermissionsDTO dto)
         {
             var result = _permissionsService.Edit(dto);
             return Json(result);

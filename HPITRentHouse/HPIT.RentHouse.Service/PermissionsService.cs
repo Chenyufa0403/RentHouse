@@ -16,11 +16,11 @@ namespace HPIT.RentHouse.Service
         /// 查询权限
         /// </summary>
         /// <returns></returns>
-        public List<PermissionDTO> GetList()
+        public List<PermissionsDTO> GetList()
         {
             var db = new RentHouseEntity();
             BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);
-            var list = bs.GetList(e => true).Select(e => new PermissionDTO
+            var list = bs.GetList(e => true).Select(e => new PermissionsDTO
             {
                 Description = e.Description,
                 Id = e.Id,
@@ -36,7 +36,7 @@ namespace HPIT.RentHouse.Service
         /// <param name="name"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<PermissionDTO> GetPageList(int start, int length, string name, ref int count)
+        public List<PermissionsDTO> GetPageList(int start, int length, string name, ref int count)
         {
             var db = new RentHouseEntity();
             var bs = new BaseService<T_Permissions>(db);
@@ -46,7 +46,7 @@ namespace HPIT.RentHouse.Service
                 query = query.And(e => e.Name.Contains(name));
             }
             var list = bs.GetPagedList(start, length, ref count, query, a => a.Id);
-            var result = list.Select(a => new PermissionDTO
+            var result = list.Select(a => new PermissionsDTO
             {
                 Id = a.Id,
                 Name = a.Name,
@@ -59,7 +59,7 @@ namespace HPIT.RentHouse.Service
         /// </summary>
         /// <param name="permission"></param>
         /// <returns></returns>
-        public AjaxResult Add(PermissionDTO permission)
+        public AjaxResult Add(PermissionsDTO permission)
         {
             var db = new RentHouseEntity();
             var bs = new BaseService<T_Permissions>(db);
@@ -82,12 +82,12 @@ namespace HPIT.RentHouse.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public PermissionDTO Edit(long id)
+        public PermissionsDTO Edit(long id)
         {
             var db = new RentHouseEntity();
             BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);
             T_Permissions model = bs.Get(a => a.Id == id);//少了个等于号，一个等于号是赋值，两个等于号是变量比较
-            PermissionDTO dto = new PermissionDTO();
+            PermissionsDTO dto = new PermissionsDTO();
             if (model != null)
             {
                 dto.Name = model.Name;
@@ -100,7 +100,7 @@ namespace HPIT.RentHouse.Service
         /// </summary>
         /// <param name="permission"></param>
         /// <returns></returns>
-        public AjaxResult Edit(PermissionDTO permission)
+        public AjaxResult Edit(PermissionsDTO permission)
         {
             var db = new RentHouseEntity();
             BaseService<T_Permissions> bs = new BaseService<T_Permissions>(db);

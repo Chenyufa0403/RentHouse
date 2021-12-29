@@ -43,9 +43,10 @@
   <ItemGroup>
     <Compile Include="AdminUsersDTO.cs" />
     <Compile Include="CitiesDTO.cs" />
-    <Compile Include="PermissionDTO.cs" />
+    <Compile Include="PermissionsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolesDTO.cs" />
+    <Compile Include="RolesEditDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

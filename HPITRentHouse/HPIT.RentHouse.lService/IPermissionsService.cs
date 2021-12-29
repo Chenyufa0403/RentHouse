@@ -14,7 +14,7 @@ namespace HPIT.RentHouse.lService
         /// 查询权限
         /// </summary>
         /// <returns></returns>
-        List<PermissionDTO> GetList();
+        List<PermissionsDTO> GetList();
         /// <summary>
         /// 查询权限列表
         /// </summary>
@@ -23,25 +23,25 @@ namespace HPIT.RentHouse.lService
         /// <param name="name"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        List<PermissionDTO> GetPageList(int start, int length, string name, ref int count);
+        List<PermissionsDTO> GetPageList(int start, int length, string name, ref int count);
         /// <summary>
         /// 添加权限节点
         /// </summary>
         /// <param name="permission"></param>
         /// <returns></returns>
-        AjaxResult Add(PermissionDTO permission);
+        AjaxResult Add(PermissionsDTO permission);
         /// <summary>
         /// 查询修改权限id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        PermissionDTO Edit(long id);
+        PermissionsDTO Edit(long id);
         /// <summary>
         /// 修改权限
         /// </summary>
         /// <param name="permission"></param>
         /// <returns></returns>
-        AjaxResult Edit(PermissionDTO permission);
+        AjaxResult Edit(PermissionsDTO permission);
         /// <summary>
         /// 删除权限
         /// </summary>
