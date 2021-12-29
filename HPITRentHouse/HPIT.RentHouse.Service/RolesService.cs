@@ -81,15 +81,16 @@ namespace HPIT.RentHouse.Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public RolesDTO Edit(long id)
+        public RolesEditDTO Edit(long id)
         {
             var db = new RentHouseEntity();
             BaseService<T_Roles> bs = new BaseService<T_Roles>(db);
             T_Roles model = bs.Get(a => a.Id == id);//少了个等于号，一个等于号是赋值，两个等于号是变量比较
-            RolesDTO dto = new RolesDTO();
+            RolesEditDTO dto = new RolesEditDTO();
             if (model != null)
             {
                 dto.Name = model.Name;
+                dto.PermissionsIds = model.T_Permissions.Select(t => t.Id).ToList();
             }
             return dto;
         }

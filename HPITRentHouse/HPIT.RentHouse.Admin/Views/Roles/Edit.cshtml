@@ -1,5 +1,5 @@
 ﻿@using HPIT.RentHouse.DTO
-@model RolesDTO
+@model RolesEditDTO
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -31,7 +31,7 @@
                             {
                                 <dt>
                                     <label class="">
-                                        <input type="checkbox" class="PermissionsIds" name="PermissionsIds" value="@permissions.Id">
+                                        <input type="checkbox" class="PermissionsIds" name="PermissionsIds" @(Model.PermissionsIds.Contains(permissions.Id) ? "checked" : "") value="@permissions.Id">
                                         @permissions.Description
                                     </label>
                                 </dt>

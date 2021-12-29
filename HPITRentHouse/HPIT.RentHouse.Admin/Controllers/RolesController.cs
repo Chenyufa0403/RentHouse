@@ -76,7 +76,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         {
             var per = _permissionsService.GetList();
             ViewBag.perList = per;
-            RolesDTO dto = _rolesService.Edit(id);
+            RolesEditDTO dto = _rolesService.Edit(id);
             return View(dto);
         }
         /// <summary>

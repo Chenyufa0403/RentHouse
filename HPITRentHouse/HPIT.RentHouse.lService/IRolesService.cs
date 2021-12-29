@@ -35,7 +35,7 @@ namespace HPIT.RentHouse.lService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        RolesDTO Edit(long id);
+        RolesEditDTO Edit(long id);
         /// <summary>
         /// 修改角色
         /// </summary>
