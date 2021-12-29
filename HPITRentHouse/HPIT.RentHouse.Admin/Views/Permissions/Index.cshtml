@@ -166,9 +166,11 @@
         $("#checkall").click(function () {
             $(".chk").prop("checked", this.checked)
         });
-        $(".chk").click(function () {
-            var checkAll = $(".chk").length == $(".chk:checked").length ? true : false
-            $("#checkall").prop("checked", checkAll)
-        });
+        setTimeout(function () {
+            $(".chk").click(function () {
+                var checkAll = $(".chk").length == $(".chk:checked").length ? true : false
+                $("#checkall").prop("checked", checkAll)
+            });
+        }, 1000);
     </script>
 }
