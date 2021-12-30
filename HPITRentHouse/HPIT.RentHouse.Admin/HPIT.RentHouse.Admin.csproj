@@ -492,6 +492,7 @@
     <Compile Include="Content\ueditor\1.4.3\net\App_Code\PathFormater.cs" />
     <Compile Include="Content\ueditor\1.4.3\net\App_Code\UploadHandler.cs" />
     <Compile Include="Controllers\AdminUsersController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1057,6 +1058,7 @@
     <Content Include="Views\Permissions\Edit.cshtml" />
     <Content Include="Views\AdminUsers\Edit.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
