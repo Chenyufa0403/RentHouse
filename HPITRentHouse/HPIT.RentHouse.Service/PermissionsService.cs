@@ -70,11 +70,11 @@ namespace HPIT.RentHouse.Service
             long id = bs.Add(permissions);
             if (id > 0)
             {
-                return new AjaxResult(ResultState.Success, "管理员添加成功");
+                return new AjaxResult(ResultState.Success, "权限添加成功");
             }
             else
             {
-                return new AjaxResult(ResultState.Error, "管理员添加失败");
+                return new AjaxResult(ResultState.Error, "权限添加失败");
             }
         }
         /// <summary>

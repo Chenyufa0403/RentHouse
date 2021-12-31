@@ -17,5 +17,6 @@ namespace HPIT.RentHouse.DTO
         public string CityId { get; set; }
         public int LoginErrorTimes { get; set; }
         public DateTime LastLoginErrorDateTime { get; set; }
+        public List<long> RolesIds { get; set; }
     }
 }

@@ -18,7 +18,14 @@ namespace HPIT.RentHouse.Service
         /// <returns></returns>
         public List<RolesDTO> GetList()
         {
-            throw new NotImplementedException();
+            var db = new RentHouseEntity();
+            BaseService<T_Roles> bs = new BaseService<T_Roles>(db);
+            var list = bs.GetList(e => true).Select(e => new RolesDTO
+            {
+                Id = e.Id,
+                Name = e.Name
+            }).ToList();
+            return list;
         }
         /// <summary>
         /// 查询角色列表
@@ -69,11 +76,11 @@ namespace HPIT.RentHouse.Service
             long id = bs.Add(role);
             if (id > 0)
             {
-                return new AjaxResult(ResultState.Success, "管理员添加成功");
+                return new AjaxResult(ResultState.Success, "角色添加成功");
             }
             else
             {
-                return new AjaxResult(ResultState.Error, "管理员添加失败");
+                return new AjaxResult(ResultState.Error, "角色添加失败");
             }
         }
         /// <summary>

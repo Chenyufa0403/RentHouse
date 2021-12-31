@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout1.cshtml";
+
 }
 
 <article class="cl pd-20">
@@ -56,6 +57,32 @@
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>错误次数：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" value="@Model.LoginErrorTimes" placeholder="" name="LoginErrorTimes" id="LoginErrorTimes">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">角色权限：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <dl class="permission-list">
+                    <dt>
+                        <label>
+                            选择权限
+                        </label>
+                    </dt>
+                    <dd>
+                    <dd>
+                        <dl class="permission-list2" style="height:140px">
+                            @foreach (RolesDTO roles in ViewBag.RolesList as List<RolesDTO>)
+                            {
+                                <dt>
+                                    <label class="">
+                                        <input type="checkbox" class="RolesIds" name="RolesIds" @(Model.RolesIds.Contains(roles.Id) ? "checked" : "") value="@roles.Id">
+                                        @roles.Name
+                                    </label>
+                                </dt>
+                            }
+                        </dl>
+                    </dd>
+                </dl>
             </div>
         </div>
         <div class="row cl">

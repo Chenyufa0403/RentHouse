@@ -1,6 +1,8 @@
 ﻿using HPIT.RentHouse.Admin.Models;
 using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.lService;
+using HPIT.RentHouse.Service;
+using HPIT.RentHouse.Service.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +15,27 @@ namespace HPIT.RentHouse.Admin.Controllers
     {
         // GET: AdminUsers
         private IAdminUsersService _adminUsersService;
-        public AdminUsersController(IAdminUsersService adminUsersService)
+        private IRolesService _rolesService;
+
+        public AdminUsersController(IAdminUsersService adminUsersService, IRolesService rolesService)
         {
             _adminUsersService = adminUsersService;
+            _rolesService = rolesService;
+        }
+        /// <summary>
+        /// 获取城市表字段
+        /// </summary>
+        /// <returns></returns>
+        public List<CitiesDTO> CityList()
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_Cities>(db);
+            var list = bs.GetList(e => true).Select(e => new CitiesDTO
+            {
+                Id = e.Id,
+                Name = e.Name
+            }).ToList();
+            return list;
         }
         /// <summary>
         /// 查询管理员
@@ -48,6 +68,10 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <returns></returns>
         public ActionResult Add()
         {
+            var roles = _rolesService.GetList();
+            ViewBag.RolesList = roles;
+            var city = _adminUsersService.CityList();
+            ViewBag.CityList = city;
             return View();
         }
         /// <summary>
@@ -68,8 +92,11 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <returns></returns>
         public ActionResult Edit(long id)
         {
+            var roles = _rolesService.GetList();
+            ViewBag.RolesList = roles;
             AdminUsersDTO dto = _adminUsersService.Edit(id);
-            ViewBag.CityList = _adminUsersService.CityList();
+            var city = _adminUsersService.CityList();
+            ViewBag.CityList = city;
             return View(dto);
         }
         /// <summary>

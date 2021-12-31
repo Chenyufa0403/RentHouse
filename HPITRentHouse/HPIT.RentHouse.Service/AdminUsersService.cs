@@ -18,7 +18,20 @@ namespace HPIT.RentHouse.Service
         /// <returns></returns>
         public List<AdminUsersDTO> GetList()
         {
-            throw new NotImplementedException();
+            var db = new RentHouseEntity();
+            BaseService<T_AdminUsers> bs = new BaseService<T_AdminUsers>(db);
+            var list = bs.GetList(e => true).Select(e => new AdminUsersDTO
+            {
+                Name = e.Name,
+                Email = e.Email,
+                CityId = e.CityId.ToString(),
+                Id = e.Id,
+                LoginErrorTimes = e.LoginErrorTimes,
+                PasswordHash = e.PasswordHash,
+                PasswordSalt = e.PasswordSalt,
+                PhoneNum = e.PhoneNum
+            }).ToList();
+            return list;
         }
         /// <summary>
         /// 查询管理员列表
@@ -58,6 +71,7 @@ namespace HPIT.RentHouse.Service
         {
             var db = new RentHouseEntity();
             var bs = new BaseService<T_AdminUsers>(db);
+            var bsa = new BaseService<T_Roles>(db);
             T_AdminUsers users = new T_AdminUsers()
             {
                 Id = admin.Id,
@@ -71,6 +85,14 @@ namespace HPIT.RentHouse.Service
                 CityId = Convert.ToInt32(admin.CityId),
                 CreateDateTime = DateTime.Now
             };
+            if (admin.RolesIds != null && admin.RolesIds.Count > 0)
+            {
+                foreach (var ids in admin.RolesIds)
+                {
+                    T_Roles roles = bsa.Get(p => p.Id == ids);
+                    users.T_Roles.Add(roles);
+                }
+            }
             long id = bs.Add(users);
             if (id > 0)
             {
@@ -102,6 +124,7 @@ namespace HPIT.RentHouse.Service
                 dto.PasswordSalt = model.PasswordSalt;
                 dto.PhoneNum = model.PhoneNum;
                 dto.LastLoginErrorDateTime = DateTime.Now;
+                dto.RolesIds = model.T_Roles.Select(r => r.Id).ToList();
             }
             return dto;
         }
@@ -115,14 +138,26 @@ namespace HPIT.RentHouse.Service
             var db = new RentHouseEntity();
             BaseService<T_AdminUsers> bs = new BaseService<T_AdminUsers>(db);
             var model = bs.Get(a => a.Id == adminUsers.Id);
-
+            var bsa = new BaseService<T_Roles>(db);
             model.Name = adminUsers.Name;
             model.LoginErrorTimes = adminUsers.LoginErrorTimes;
-            model.PasswordHash = adminUsers.PasswordHash;
-            model.PasswordSalt = adminUsers.PasswordSalt;
+            //model.PasswordSalt = adminUsers.PasswordSalt;
+            //model.PasswordHash = adminUsers.PasswordHash;
+            model.PasswordSalt = CommonHelper.CreateVerifyCode(5);
+            model.PasswordHash = CommonHelper.CalcMD5(adminUsers.PasswordHash + model.PasswordSalt);
             model.PhoneNum = adminUsers.PhoneNum;
+            model.LastLoginErrorDateTime = DateTime.Now;
             model.CityId = Convert.ToInt32(adminUsers.CityId);
             model.Email = adminUsers.Email;
+            model.T_Roles.Clear();
+            if (adminUsers.RolesIds != null && adminUsers.RolesIds.Count > 0)
+            {
+                foreach (var ids in adminUsers.RolesIds)
+                {
+                    T_Roles roles = bsa.Get(p => p.Id == ids);
+                    model.T_Roles.Add(roles);
+                }
+            }
             bool res = bs.Update(model);
             if (res)
             {
@@ -161,11 +196,11 @@ namespace HPIT.RentHouse.Service
             var model = bs.Get(a => a.Id == id);
             if (bs.Delete(model))
             {
-                return new AjaxResult(ResultState.Success, "权限删除成功");
+                return new AjaxResult(ResultState.Success, "管理员删除成功");
             }
             else
             {
-                return new AjaxResult(ResultState.Error, "权限删除失败");
+                return new AjaxResult(ResultState.Error, "管理员删除失败");
             }
         }
         /// <summary>
@@ -184,11 +219,11 @@ namespace HPIT.RentHouse.Service
                     var model = bs.Get(a => a.Id == id);
                     bs.Delete(model);
                 }
-                return new AjaxResult(ResultState.Success, "权限删除成功");
+                return new AjaxResult(ResultState.Success, "管理员删除成功");
             }
             catch (Exception)
             {
-                return new AjaxResult(ResultState.Error, "权限删除失败");
+                return new AjaxResult(ResultState.Error, "管理员删除失败");
             }
         }
     }

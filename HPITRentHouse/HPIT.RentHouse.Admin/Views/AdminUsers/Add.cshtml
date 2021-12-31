@@ -1,4 +1,4 @@
-﻿
+﻿@using HPIT.RentHouse.DTO
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -40,6 +40,20 @@
             <label class="form-label col-xs-4 col-sm-3">城市编号：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <span class="select-box" style="width:150px;">
+                    <select id="CityId" class="select" name="CityId" size="1">
+                        <option value="null">总部</option>
+                        @foreach (var item in ViewBag.CityList as List<HPIT.RentHouse.DTO.CitiesDTO>)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </span>
+            </div>
+        </div>
+        @*<div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">城市编号：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <span class="select-box" style="width:150px;">
                     <select class="select" name="CityId" size="1">
                         <option value="1">郑州</option>
                         <option value="2">洛阳</option>
@@ -47,11 +61,37 @@
                     </select>
                 </span>
             </div>
-        </div>
+        </div>*@
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>错误次数：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" placeholder="" name="LoginErrorTimes" id="LoginErrorTimes">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">角色权限：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <dl class="permission-list">
+                    <dt>
+                        <label>
+                            选择权限
+                        </label>
+                    </dt>
+                    <dd>
+                    <dd>
+                        <dl class="permission-list2" style="height:140px">
+                            @foreach (RolesDTO roles in ViewBag.RolesList as List<RolesDTO>)
+                            {
+                                <dt>
+                                    <label class="">
+                                        <input type="checkbox" class="RolesIds" name="RolesIds" value="@roles.Id">
+                                        @roles.Name
+                                    </label>
+                                </dt>
+                            }
+                        </dl>
+                    </dd>
+                </dl>
             </div>
         </div>
         <div class="row cl">
