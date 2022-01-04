@@ -81,9 +81,42 @@
     <aside class="Hui-aside">
 
         <div class="menu_dropdown bk_2">
-            
+            <dl id="menu-house">
+                <dt>
+                    <i class="Hui-iconfont">&#xe616;</i> 房源管理
+                    <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                </dt>
+                <dd>
+                    <ul>
+                        <li id="whole">
+                            <a href="@Url.Action("Index","House")?typeId=12" title="资讯管理">整租管理</a>
+                        </li>
+                        <li id="sharing">
+                            <a href="@Url.Action("Index","House")?typeId=11" title="合租管理">合租管理</a>
+                        </li>
+                        <li id="short">
+                            <a href="@Url.Action("Index","House")?typeId=18" title="短租管理">短租管理</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
+            <dl id="menu-product">
+                <dt>
+                    <i class="Hui-iconfont">&#xe620;</i> 租房预约管理
+                    <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+                </dt>
+                <dd>
+                    <ul>
+                        <li id="appointment">
+                            <a href="@Url.Action("Index","HouseAppointment")" title="预约订单管理">预约订单管理</a>
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+
             <dl id="menu-admin">
-                <dt class="selected"><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+                <dt class="selected"><i class="Hui-iconfont">&#xe62d;</i> 系统管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
                 <dd style="display:block">
                     <ul>
                         <li id="role"><a href="@Url.Action("Index", "Roles")" title="角色管理">角色管理</a></li>
@@ -92,8 +125,8 @@
                     </ul>
                 </dd>
             </dl>
-            
-            
+
+
         </div>
     </aside>
     <div class="dislpayArrow hidden-xs"> <a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a> </div>
