@@ -62,8 +62,8 @@ namespace HPIT.RentHouse.lService
         /// <summary>
         /// 登录
         /// </summary>
-        /// <param name="dtO"></param>
+        /// <param name="dto"></param>
         /// <returns></returns>
-        AjaxResult Login(LoginDTO dtO);
+        AjaxResult Login(LoginDTO dto);
     }
 }
