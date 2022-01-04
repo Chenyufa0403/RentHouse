@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace HPIT.RentHouse.Admin.Controllers
 {
+    [Authorize]
     public class PermissionsController : Controller
     {
         private IPermissionsService _permissionsService;

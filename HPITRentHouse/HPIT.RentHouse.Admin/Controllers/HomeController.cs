@@ -19,6 +19,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         {
             _adminUsersService = adminUsersService;
         }
+        [Authorize]
         public ActionResult Index()
         {
             return View();
