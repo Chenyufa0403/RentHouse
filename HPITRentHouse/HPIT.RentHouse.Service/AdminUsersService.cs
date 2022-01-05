@@ -74,28 +74,35 @@ namespace HPIT.RentHouse.Service
             var db = new RentHouseEntity();
             var bs = new BaseService<T_AdminUsers>(db);
             var bsa = new BaseService<T_Roles>(db);
-            T_AdminUsers users = new T_AdminUsers()
+            //验证手机号唯一
+            var model = bs.Get(a => a.PhoneNum == admin.PhoneNum);
+            if (model != null)
             {
-                Id = admin.Id,
-                Name = admin.Name,
-                PhoneNum = admin.PhoneNum,
-                PasswordHash = admin.PasswordHash,
-                PasswordSalt = admin.PasswordSalt,
-                Email = admin.Email,
-                LoginErrorTimes = admin.LoginErrorTimes,
-                LastLoginErrorDateTime = DateTime.Now,
-                CityId = Convert.ToInt32(admin.CityId),
-                CreateDateTime = DateTime.Now
-            };
+                return new AjaxResult(ResultState.Error, "添加管理员失败,该手机号已注册！");
+            }
+            model = new T_AdminUsers();
+            model.Id = admin.Id;
+            model.Name = admin.Name;
+            model.PhoneNum = admin.PhoneNum;
+            //PasswordHash = admin.PasswordHash,
+            //PasswordSalt = admin.PasswordSalt,
+            model.PasswordSalt = CommonHelper.CreateVerifyCode(5);
+            //MD5加盐加密
+            model.PasswordHash = CommonHelper.CalcMD5(admin.PasswordHash + model.PasswordSalt);
+            model.Email = admin.Email;
+            model.LoginErrorTimes = admin.LoginErrorTimes;
+            model.LastLoginErrorDateTime = DateTime.Now;
+            model.CityId = Convert.ToInt32(admin.CityId);
+            model.CreateDateTime = DateTime.Now;
             if (admin.RolesIds != null && admin.RolesIds.Count > 0)
             {
                 foreach (var ids in admin.RolesIds)
                 {
                     T_Roles roles = bsa.Get(p => p.Id == ids);
-                    users.T_Roles.Add(roles);
+                    model.T_Roles.Add(roles);
                 }
             }
-            long id = bs.Add(users);
+            long id = bs.Add(model);
             if (id > 0)
             {
                 return new AjaxResult(ResultState.Success, "管理员添加成功");

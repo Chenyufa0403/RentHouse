@@ -1,6 +1,8 @@
 using Autofac;
 using Autofac.Integration.Mvc;
+using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.lService;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +12,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace HPIT.RentHouse.Admin
 {
@@ -44,6 +47,35 @@ namespace HPIT.RentHouse.Admin
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             #endregion
 
+        }
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+            GetUserInfo();
+        }
+
+        //通过cookie解密 读取用户信息到 HttpContext.Current.User
+        public void GetUserInfo()
+        {
+            // 1. 读登录Cookie
+            HttpCookie cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (cookie != null)
+            {
+                try
+                {
+                    LoginAdminDTO userData = null;
+                    // 2. 解密Cookie值，获取FormsAuthenticationTicket对象
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(cookie.Value);
+
+                    if (ticket != null && string.IsNullOrEmpty(ticket.UserData) == false)
+                        // 3. 还原用户数据
+                        userData = JsonConvert.DeserializeObject<LoginAdminDTO>(ticket.UserData);
+
+                    if (ticket != null && userData != null)
+                        // 4. 构造我们的MyFormsPrincipal实例，重新给context.User赋值。
+                        HttpContext.Current.User = new MyFormsPrincipal<LoginAdminDTO>(ticket, userData);
+                }
+                catch { /* 有异常也不要抛出，防止攻击者试探。 */ }
+            }
         }
     }
 }

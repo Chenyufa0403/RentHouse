@@ -2337,5 +2337,4 @@ GO
 GO
 ALTER DATABASE [RentHouse] SET  READ_WRITE 
 GO
-SELECT * FROM dbo.T_IdNames
-select * from dbo.T_Cities
+SELECT * FROM dbo.T_Houses

@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="AdminUsersDTO.cs" />
     <Compile Include="CitiesDTO.cs" />
+    <Compile Include="HousesAddDTO.cs" />
+    <Compile Include="HousesDTO.cs" />
     <Compile Include="LoginAdminDTO.cs" />
     <Compile Include="LoginDTO.cs" />
     <Compile Include="PermissionsDTO.cs" />
