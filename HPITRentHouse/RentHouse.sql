@@ -363,6 +363,8 @@ INSERT [dbo].[T_AdminUsers] ([Id], [Name], [PhoneNum], [PasswordHash], [Password
 GO
 INSERT [dbo].[T_AdminUsers] ([Id], [Name], [PhoneNum], [PasswordHash], [PasswordSalt], [Email], [CityId], [LoginErrorTimes], [LastLoginErrorDateTime], [CreateDateTime], [IsDeleted]) VALUES (59, N'田果', N'15538568110', N'03AD805E86F301A7FBD0F4177281F13A', N'ftxaf', N'362520246@qq.com', 1, 0, NULL, CAST(N'2019-10-23 22:15:45.573' AS DateTime), 0)
 GO
+INSERT [dbo].[T_AdminUsers] ([Id], [Name], [PhoneNum], [PasswordHash], [PasswordSalt], [Email], [CityId], [LoginErrorTimes], [LastLoginErrorDateTime], [CreateDateTime], [IsDeleted]) VALUES (60, N'小陈', N'18888888888', N'228F31093F6A349A628C7883503B3547', N'dxhxw', N'362520246@qq.com', 1, 0, NULL, CAST(N'2019-10-23 22:15:45.573' AS DateTime), 0)
+GO
 SET IDENTITY_INSERT [dbo].[T_AdminUsers] OFF
 GO
 SET IDENTITY_INSERT [dbo].[T_Attachments] ON 
