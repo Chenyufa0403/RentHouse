@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <section class="Hui-article-box">
     <nav class="breadcrumb">
         <i class="Hui-iconfont">&#xe67f;</i> 首页
@@ -25,7 +24,7 @@
                     <a href="javascript:;" id="deleteBatch" class="btn btn-danger radius">
                         <i class="Hui-iconfont">&#xe6e2;</i> 批量删除
                     </a>
-                    <a href="javascript:;" onclick='admin_user("添加管理员","@Url.Action("Add", "Houses")","700")' class="btn btn-primary radius" id="btn_Add">
+                    <a href="javascript:;" onclick='admin_user("添加管理员","@Url.Action("Add", "Shorts")","700")' class="btn btn-primary radius" id="btn_Add">
                         <i class="Hui-iconfont">&#xe600;</i> 添加管理员
                     </a>
                 </span>
@@ -57,9 +56,9 @@
 
         $(function () {
             //设置导航栏选中样式
-            $("#whole").parent().parent().prev().addClass("selected");
-            $("#whole").parent().parent().css("display", "block");
-            $("#whole").addClass("current");
+            $("#short").parent().parent().prev().addClass("selected");
+            $("#short").parent().parent().css("display", "block");
+            $("#short").addClass("current");
 
             getData();
         })
@@ -114,7 +113,7 @@
                 //使用ajax异步请求
                 ajax: {
                     type: 'POST',
-                    url: '@Url.Action("GetList", "Houses")',
+                    url: '@Url.Action("GetList", "Shorts")',
                     //发送给服务器的数据
                     data: function (d) {
                         console.log(d)
@@ -135,14 +134,14 @@
         //修改
         $(".edit").livequery('click', function () {
             var id = $(this).attr("data-id");
-            layer_show("修改管理员", "@Url.Action("Edit", "Houses")?id=" + id, "800","800")
+            layer_show("修改管理员", "@Url.Action("Edit", "Shorts")?id=" + id, "800","800")
         });
         //删除
         $(".delete").livequery('click', function () {
             var id = $(this).attr("data-id");
             layer.confirm('确认删除该数据?', { icon: 3, title: '提示' }, function
                 (index) {
-                $.post("@Url.Action("Delete", "Houses")", { id: id }, function
+                $.post("@Url.Action("Delete", "Shorts")", { id: id }, function
                     (data) {
                     if (data.State == 1) {
                         location.reload();
@@ -164,7 +163,7 @@
                 return;
             }
             layer.confirm("确认是否删除", { icon: 3, title: "删除提示" }, function () {
-                $.post("@Url.Action("DeleteBatch", "Houses")", { ids: ids },
+                $.post("@Url.Action("DeleteBatch", "Shorts")", { ids: ids },
                     function (data) {
                         if (data.State == 1) {
                             location.reload();

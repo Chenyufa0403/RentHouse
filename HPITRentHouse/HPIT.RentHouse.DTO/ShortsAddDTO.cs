@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HPIT.RentHouse.DTO
 {
-    public class HousesAddDTO
+    public class ShortsAddDTO
     {
     }
 }
