@@ -159,5 +159,25 @@ namespace HPIT.RentHouse.Service
                 return new AjaxResult(ResultState.Error, "权限删除失败");
             }
         }
+
+        public List<PermissionsDTO> GetListByUser(long userId)
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_AdminUsers>(db);
+            var user = bs.Get(a => a.Id == userId);
+            List<T_Roles> rolesList = user.T_Roles.ToList();
+            List<PermissionsDTO> permissionsList = new List<PermissionsDTO>();
+            foreach (var role in rolesList)
+            {
+                var rolePermissions = role.T_Permissions.Select(e => new PermissionsDTO()
+                {
+                    Id = e.Id,
+                    Description = e.Description,
+                    Name = e.Name
+                });
+                permissionsList.AddRange(rolePermissions);
+            }
+            return permissionsList;
+        }
     }
 }

@@ -54,6 +54,11 @@ namespace HPIT.RentHouse.lService
         /// <param name="ids"></param>
         /// <returns></returns>
         AjaxResult DeleteBatch(List<long> ids);
-
+        /// <summary>
+        /// 获取用户权限
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        List<PermissionsDTO> GetListByUser(long userId);
     }
 }
