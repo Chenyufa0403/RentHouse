@@ -48,5 +48,19 @@ namespace HPIT.RentHouse.Service
                 return list;
             }
         }
+        public List<AttachmentDTO> GetAttachmentList()
+        {
+            using (var db = new RentHouseEntity())
+            {
+                var bs = new BaseService<T_Attachments>(db);
+                var list = bs.GetList(e => true).Select(e => new AttachmentDTO
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                    IconName = e.IconName
+                }).ToList(); ;
+                return list;
+            }
+        }
     }
 }

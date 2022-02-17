@@ -15,5 +15,10 @@ namespace HPIT.RentHouse.lService
         /// <param name="communityName"></param>
         /// <returns></returns>
         List<HousesDTO> GetHouseList(string communityName, int typeId, int start, int length, ref int totalCount);
+        ///// <summary>
+        ///// 获取房源附属设施
+        ///// </summary>
+        ///// <returns></returns>
+        List<AttachmentDTO> GetAttachmentList();
     }
 }
