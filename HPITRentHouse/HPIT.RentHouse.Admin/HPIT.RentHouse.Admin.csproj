@@ -499,9 +499,6 @@
     <Compile Include="Controllers\HousesController.cs" />
     <Compile Include="Controllers\PermissionsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
-    <Compile Include="Controllers\SharingsController.cs" />
-    <Compile Include="Controllers\ShortsController.cs" />
-    <Compile Include="Controllers\WholesController.cs" />
     <Compile Include="Filters\CheckMyPermissionAttribute.cs" />
     <Compile Include="Filters\ExceptionAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -1070,15 +1067,6 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Houses\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Sharings\Add.cshtml" />
-    <Content Include="Views\Sharings\Edit.cshtml" />
-    <Content Include="Views\Sharings\Index.cshtml" />
-    <Content Include="Views\Shorts\Add.cshtml" />
-    <Content Include="Views\Shorts\Edit.cshtml" />
-    <Content Include="Views\Shorts\Index.cshtml" />
-    <Content Include="Views\Wholes\Add.cshtml" />
-    <Content Include="Views\Wholes\Edit.cshtml" />
-    <Content Include="Views\Wholes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
