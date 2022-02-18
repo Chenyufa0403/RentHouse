@@ -74,5 +74,9 @@ namespace HPIT.RentHouse.Admin.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
+        public ActionResult NoPermission()
+        {
+            return View();
+        }
     }
 }

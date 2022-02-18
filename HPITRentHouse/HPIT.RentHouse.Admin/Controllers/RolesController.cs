@@ -1,4 +1,5 @@
-﻿using HPIT.RentHouse.Admin.Models;
+﻿using HPIT.RentHouse.Admin.Filters;
+using HPIT.RentHouse.Admin.Models;
 using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.lService;
 using System;
@@ -23,6 +24,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// 查询角色
         /// </summary>
         /// <returns></returns>
+        //[CheckMyPermission("lookHouse")]
         public ActionResult Index()
         {
             return View();
