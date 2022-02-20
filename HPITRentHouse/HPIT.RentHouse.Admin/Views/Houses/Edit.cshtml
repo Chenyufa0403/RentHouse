@@ -159,10 +159,10 @@
                 //当验证通过的时候发送ajax请求
                 if (validform.check(false)) {
 
-                    $.post("@Url.Action("Edit", "House")", formObj, function (data) {
+                    $.post("@Url.Action("Edit", "Houses")", formObj, function (data) {
                         if (data.State == 1) {
                             //弹出提示信息
-                            layer.msg('添加成功', { icon: 1 });
+                            layer.msg('修改成功', { icon: 1 });
                             //关闭遮罩层
                             //刷新列表
                             parent.location.reload();
