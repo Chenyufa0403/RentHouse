@@ -129,38 +129,39 @@ namespace HPIT.RentHouse.Service
                 return null;
             }
         }
-        //public AjaxResult Add(HousesAddDTO dto)
-        //{
-        //    var db = new RentHouseEntity();
-        //    var bs = new BaseService<T_Houses>(db);
-        //    T_Houses model = new T_Houses();
-        //    model.Address = dto.Address;
-        //    model.Area = dto.Area;
-        //    model.CheckInDateTime = dto.CheckInDateTime;
-        //    model.CommunityId = dto.CommunityId;
-        //    model.DecorateStatusId = dto.DecorateStatusId;
-        //    model.Description = dto.Description;
-        //    model.Direction = dto.Direction;
-        //    model.FloorIndex = dto.FloorIndex;
-        //    model.LookableDateTime = dto.LookableDateTime;
-        //    model.MonthRent = dto.MonthRent;
-        //    model.OwnerName = dto.OwnerName;
-        //    model.OwnerPhoneNum = dto.OwnerPhoneNum;
-        //    model.RoomTypeId = dto.RoomTypeId;
-        //    model.StatusId = dto.StatusId;
-        //    model.TotalFloorCount = dto.TotalFloorCount;
-        //    model.TypeId = dto.TypeId;
-        //    model.IsDeleted = dto.IsDeleted;
-        //    long id = bs.Add(model);
-        //    if (id > 0)
-        //    {
-        //        return new AjaxResult(ResultState.Success, "房源添加成功");
-        //    }
-        //    else
-        //    {
-        //        return new AjaxResult(ResultState.Error, "房源添加失败");
-        //    }
-        //}
+        public AjaxResult Add(HousesAddDTO dto)
+        {
+            var db = new RentHouseEntity();
+            var bs = new BaseService<T_Houses>(db);
+            T_Houses model = new T_Houses();
+            model.Address = dto.Address;
+            model.Area = dto.Area;
+            model.CheckInDateTime = dto.CheckInDateTime;
+            model.CommunityId = dto.CommunityId;
+            model.DecorateStatusId = dto.DecorateStatusId;
+            model.Description = dto.Description;
+            model.Direction = dto.Direction;
+            model.FloorIndex = dto.FloorIndex;
+            model.LookableDateTime = dto.LookableDateTime;
+            model.MonthRent = dto.MonthRent;
+            model.OwnerName = dto.OwnerName;
+            model.OwnerPhoneNum = dto.OwnerPhoneNum;
+            model.RoomTypeId = dto.RoomTypeId;
+            model.StatusId = dto.StatusId;
+            model.TotalFloorCount = dto.TotalFloorCount;
+            model.TypeId = dto.TypeId;
+            model.IsDeleted = dto.IsDeleted;
+            model.CreateDateTime = DateTime.Now;
+            long id = bs.Add(model);
+            if (id > 0)
+            {
+                return new AjaxResult(ResultState.Success, "房源添加成功");
+            }
+            else
+            {
+                return new AjaxResult(ResultState.Error, "房源添加失败");
+            }
+        }
         /// <summary>
         /// 更新房源
         /// </summary>

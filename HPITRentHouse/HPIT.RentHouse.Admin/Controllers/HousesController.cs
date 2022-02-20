@@ -80,10 +80,10 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Add(HousesAddDTO dto)
+        public ActionResult Add_Per(HousesAddDTO dto)
         {
-            //var result = _housesService.Add(dto);
-            return Json(dto);
+            var result = _housesService.Add(dto);
+            return Json(result);
         }
         /// <summary>
         /// 根据区域id获取小区信息

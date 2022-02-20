@@ -26,7 +26,7 @@ namespace HPIT.RentHouse.lService
         /// </summary>
         /// <param name="houses"></param>
         /// <returns></returns>
-        //AjaxResult Add(HousesAddDTO houses);
+        AjaxResult Add(HousesAddDTO houses);
         /// <summary>
         /// 根据id获取房源信息
         /// </summary>
