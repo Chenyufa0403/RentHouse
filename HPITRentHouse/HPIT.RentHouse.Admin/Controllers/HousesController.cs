@@ -66,10 +66,10 @@ namespace HPIT.RentHouse.Admin.Controllers
         {
 
             ViewBag.RegionList = _regionService.GetRegionList(0).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
-            ViewBag.RoomTypeList = _idNameServcie.GetIdNameList(IdNameEnum.房屋类型).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
+            ViewBag.TypeList = _idNameServcie.GetIdNameList(IdNameEnum.房屋类型).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
             ViewBag.StatusList = _idNameServcie.GetIdNameList(IdNameEnum.房屋状态).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
             ViewBag.DecorateStatusList = _idNameServcie.GetIdNameList(IdNameEnum.装修状态).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
-            ViewBag.TypeList = _idNameServcie.GetIdNameList(IdNameEnum.户型).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
+            ViewBag.RoomTypeList = _idNameServcie.GetIdNameList(IdNameEnum.户型).Select(e => new SelectListItem { Text = e.Name, Value = e.Id.ToString() }).ToList();
             var list = _housesService.GetAttachmentList();
             return View(list);
         }
