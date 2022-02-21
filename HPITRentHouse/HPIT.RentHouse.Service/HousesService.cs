@@ -222,5 +222,34 @@ namespace HPIT.RentHouse.Service
                 return new AjaxResult(ResultState.Error, "当前房源信息不存在");
             }
         }
+        /// <summary>
+        /// 添加房源图片
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public AjaxResult AddHousePic(HousePicDTO dto)
+        {
+            using (var db = new RentHouseEntity())
+            {
+                BaseService<T_HousePics> bs = new BaseService<T_HousePics>(db);
+                var model = new T_HousePics
+                {
+                    CreateDateTime = DateTime.Now,
+                    HouseId = dto.HouseId,
+                    ThumbUrl = dto.ThumbUrl,
+                    Url = dto.Url
+                };
+                long id = bs.Add(model);
+                if (id > 0)
+                {
+                    return new AjaxResult(ResultState.Success, "添加图片成功");
+                }
+                else
+                {
+                    return new AjaxResult(ResultState.Error, "添加图片败");
+                }
+
+            }
+        }
     }
 }
