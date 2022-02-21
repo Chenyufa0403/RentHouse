@@ -1,11 +1,9 @@
 ﻿@using HPIT.RentHouse.DTO;
 @model HPIT.RentHouse.DTO.HousesEditDTO
-@{
-    ViewBag.Title = "Edit";
+@{ ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 
-    var attachmentList = ViewBag.AttachmentList as List<AttachmentDTO>;
-}
+    var attachmentList = ViewBag.AttachmentList as List<AttachmentDTO>; }
 
 <style>
     .row > label, .row > div {
@@ -120,7 +118,7 @@
             <div class="formControls col-8">
                 @foreach (var item in Model.HouseAttachments)
                 {
-                    <input type="checkbox" id="AttachmentId_@item.AttachmentId" name="AttachmentIds" checked="@item.IsUsed" value="@item.AttachmentId" />
+    <input type="checkbox" id="AttachmentId_@item.AttachmentId" name="AttachmentIds" checked="@item.IsUsed" value="@item.AttachmentId" />
                     <label for="AttachmentId_@item.AttachmentId">@item.Name</label>}
             </div>
         </div>
@@ -175,8 +173,6 @@
                 }
 
             });
-
-
             //区域-小区联动
             $("#RegionId").change(function () {
                 //获取当前选择的Id
@@ -198,11 +194,6 @@
                     }, "json");
                 }
             });
-
-
-
-
         });
-
     </script>
 }
