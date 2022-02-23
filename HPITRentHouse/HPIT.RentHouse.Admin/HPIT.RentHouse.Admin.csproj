@@ -1098,6 +1098,7 @@
     <Content Include="Views\Home\NoPermission.cshtml" />
     <Content Include="Views\Houses\Edit.cshtml" />
     <Content Include="Views\Houses\UploadPic.cshtml" />
+    <Content Include="Views\Houses\LookPic.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

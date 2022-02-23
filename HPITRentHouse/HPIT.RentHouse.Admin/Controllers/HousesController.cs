@@ -203,5 +203,22 @@ namespace HPIT.RentHouse.Admin.Controllers
             var result = _housesService.AddHousePic(dto);
             return Json(result);
         }
+        /// <summary>
+        /// 查看图片
+        /// </summary>
+        /// <param name="houseId"></param>
+        /// <returns></returns>
+        public ActionResult LookPic(int houseId)
+        {
+            var list = _housesService.GetHousePics(houseId);
+            return View(list);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBatch(List<long> ids)
+        {
+            var result = _housesService.DeleteHousePic(ids);
+            return Json(result);
+        }
     }
 }
