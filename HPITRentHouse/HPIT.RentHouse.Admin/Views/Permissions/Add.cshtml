@@ -45,6 +45,16 @@
                         required: true,
                     },
                 },
+                //不能为空
+                messages: {
+                    Name: {
+                        required: "不能为空",
+                        maxlength: "输入长度最多是16个字符串"
+                    },
+                    Description: {
+                        required: "不能为空",
+                    },
+                },
                 onkeyup: false,
                 focusCleanup: true,
                 success: "valid",

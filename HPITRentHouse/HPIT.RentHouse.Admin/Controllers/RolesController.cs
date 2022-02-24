@@ -24,7 +24,7 @@ namespace HPIT.RentHouse.Admin.Controllers
         /// 查询角色
         /// </summary>
         /// <returns></returns>
-        //[CheckMyPermission("lookHouse")]
+        [CheckMyPermission("lookRole")]
         public ActionResult Index()
         {
             return View();

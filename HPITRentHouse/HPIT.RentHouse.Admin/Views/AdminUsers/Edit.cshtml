@@ -130,6 +130,33 @@
                         required: true
                     },
                 },
+                //不能为空
+                messages: {
+                    Name: {
+                        required: "不能为空",
+                        maxlength: "输入长度最多是16个字符串"
+                    },
+                    PhoneNum: {
+                        required: "不能为空",
+                        isMobile: "请输入正确的手机号码"
+                    },
+                    PasswordHash: {
+                        required: "不能为空"
+                    },
+                    PasswordSalt: {
+                        required: "不能为空",
+                        equalTo: "两次密码不一致"
+                    },
+                    Email: {
+                        email: "请输入正确的邮箱格式"
+                    },
+                    CityId: {
+                        required: "不能为空"
+                    },
+                    LoginErrorTimes: {
+                        required: "不能为空"
+                    },
+                },
                 onkeyup: false,
                 focusCleanup: true,
                 success: "valid",
