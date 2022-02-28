@@ -297,5 +297,39 @@ namespace HPIT.RentHouse.Service
                 return new AjaxResult(ResultState.Error, "删除失败");
             }
         }
+        public List<HousesDTO> GetList(int cityId, int pageIndex, int pageSize)
+        {
+            using (var db = new RentHouseEntity())
+            {
+                var bs = new BaseService<T_Houses>(db);
+                var query = PredicateExtensions.True<T_Houses>();
+                if (cityId > 0)
+                {
+                    query = query.And(e => e.T_Communities.T_Regions.CityId == cityId);
+                }
+                int totalCount = 0;
+                int start = (pageIndex - 1) * pageSize;
+                var list = bs.GetPagedList(start, pageSize, ref totalCount, query, e => e.Id, false).Select(e => new HousesDTO
+                {
+                    Address = e.Address,
+                    Area = e.Area,
+                    CommunityName = e.T_Communities.Name,
+                    DecorateStatusId = e.DecorateStatusId,
+                    MonthRent = e.MonthRent,
+                    Id = e.Id,
+                    RoomTypeId = e.RoomTypeId,
+                    RegionName = e.T_Communities.T_Regions.Name,
+                    FirstThumbUrl = e.T_HousePics.Where(a => !a.IsDeleted).FirstOrDefault().ThumbUrl
+                }).ToList();
+                var bsIdNames = new BaseService<T_IdNames>(db);
+                var idNamesList = bsIdNames.GetList(e => true).ToList();
+                list.ForEach(e =>
+                {
+                    e.DecorateStatusName = idNamesList.Where(i => i.Id == e.DecorateStatusId).FirstOrDefault().Name;
+                    e.RoomTypeName = idNamesList.Where(i => i.Id == e.RoomTypeId).FirstOrDefault().Name;
+                });
+                return list;
+            }
+        }
     }
 }
