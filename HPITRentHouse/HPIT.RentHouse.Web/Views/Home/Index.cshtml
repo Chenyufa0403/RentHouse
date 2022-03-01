@@ -145,64 +145,6 @@
                 <!-- 房源列表加载区域 -->
                 <div id="dv_houseList"></div>
             </div>
-
-            <div class="list clearfloat fl box-s">
-                    <a href="house-details.html">
-                        <div class="tu clearfloat">
-                            <span></span>
-                            <img src="~/upload/list-tu.jpg" />
-                        </div>
-                        <div class="right clearfloat">
-                            <div class="tit clearfloat">
-                                <p class="fl">华府骏苑</p>
-                                <span class="fr">2500<samp>元/月</samp></span>
-                            </div>
-                            <p class="recom-jianjie">三室一厅一卫   |  125m²  |  普装</p>
-                            <div class="recom-bottom clearfloat">
-                                <span><i class="iconfont icon-duihao"></i>随时住</span>
-                                <span><i class="iconfont icon-duihao"></i>家电齐全</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="list clearfloat fl box-s">
-                    <a href="house-details.html">
-                        <div class="tu clearfloat">
-                            <span></span>
-                            <img src="~/upload/list-tu.jpg" />
-                        </div>
-                        <div class="right clearfloat">
-                            <div class="tit clearfloat">
-                                <p class="fl">华府骏苑</p>
-                                <span class="fr">2500<samp>元/月</samp></span>
-                            </div>
-                            <p class="recom-jianjie">三室一厅一卫   |  125m²  |  普装</p>
-                            <div class="recom-bottom clearfloat">
-                                <span><i class="iconfont icon-duihao"></i>随时住</span>
-                                <span><i class="iconfont icon-duihao"></i>家电齐全</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="list clearfloat fl box-s">
-                    <a href="house-details.html">
-                        <div class="tu clearfloat">
-                            <span></span>
-                            <img src="~/upload/list-tu.jpg" />
-                        </div>
-                        <div class="right clearfloat">
-                            <div class="tit clearfloat">
-                                <p class="fl">华府骏苑</p>
-                                <span class="fr">2500<samp>元/月</samp></span>
-                            </div>
-                            <p class="recom-jianjie">三室一厅一卫   |  125m²  |  普装</p>
-                            <div class="recom-bottom clearfloat">
-                                <span><i class="iconfont icon-duihao"></i>随时住</span>
-                                <span><i class="iconfont icon-duihao"></i>家电齐全</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
         </div>
     </div>
 </div>
@@ -249,6 +191,25 @@
 
                     } //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
     }
+            }
+        });
+
+        //搜索
+        $(".icon-sousuo").click(function () {
+
+            var keyword = $("#txt_Keywords").val(); alert(keyword)
+            if ($.trim(keyword).length == 0) {
+                return;
+            }
+            location.href = "@Url.Action("Search", "House")?keywords=" + keyword;
+        });
+
+        $('.sch-txt,.pop-schwrap .btn-back').on('click', function () {
+            $('html,body').toggleClass('holding');
+            $('.pop-schwrap').toggleClass('on');
+            if ($('.pop-schwrap').hasClass('on')) {
+
+                $('.pop-schwrap .sch-input').focus();
             }
         });
     </script>

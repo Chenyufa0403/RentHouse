@@ -67,5 +67,11 @@ namespace HPIT.RentHouse.lService
         /// <param name="pageSize"></param>
         /// <returns></returns>
         List<HousesDTO> GetList(int cityId, int pageIndex, int pageSize);
+        /// <summary>
+        /// 房源搜索
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        List<HousesDTO> Search(HouseSearchOptions options);
     }
 }

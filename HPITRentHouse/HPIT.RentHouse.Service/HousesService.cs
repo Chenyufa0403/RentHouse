@@ -331,5 +331,83 @@ namespace HPIT.RentHouse.Service
                 return list;
             }
         }
+        /// <summary>
+        /// 房源检索
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
+        public List<HousesDTO> Search(HouseSearchOptions options)
+        {
+            using (var db = new RentHouseEntity())
+            {
+                var bs = new BaseService<T_Houses>(db);
+
+                //默认显示当前城市的房源
+                var query = bs.GetList(e => e.T_Communities.T_Regions.CityId == options.CityId);
+
+                //按区域检索
+                if (options.RegionId > 0)
+                {
+                    query = query.Where(e => e.T_Communities.RegionId == options.RegionId);
+                }
+
+                //按租金检索
+                if (options.StartMonthRent.HasValue)
+                {
+                    query = query.Where(e => e.MonthRent >= options.StartMonthRent.Value);
+                }
+
+                if (options.EndMonthRent.HasValue)
+                {
+                    query = query.Where(e => e.MonthRent <= options.EndMonthRent.Value);
+                }
+
+                //关键字
+                if (!string.IsNullOrEmpty(options.Keywords))
+                {
+                    query = query.Where(e => e.Address.Contains(options.Keywords) || e.Description.Contains(options.Keywords));
+                }
+
+                //排序
+                switch (options.OrderByType)
+                {
+                    case "MonthRentAsc":
+                        query = query.OrderBy(e => e.MonthRent);
+                        break;
+                    case "MonthRentDesc":
+                        query = query.OrderByDescending(e => e.MonthRent);
+                        break;
+                    case "AreaAsc":
+                        query = query.OrderBy(e => e.Area);
+                        break;
+                    case "AreaDesc":
+                        query = query.OrderByDescending(e => e.Area);
+                        break;
+                    default:
+                        query = query.OrderByDescending(e => e.Id);
+                        break;
+                }
+
+                var list = query.Select(e => new HousesDTO()
+                {
+                    Id = e.Id,
+                    Area = e.Area,
+                    CommunityName = e.T_Communities.Name,
+                    MonthRent = e.MonthRent,
+                    FirstThumbUrl = e.T_HousePics.Where(a => !a.IsDeleted).FirstOrDefault().ThumbUrl,
+                    RoomTypeId = e.RoomTypeId,
+                    DecorateStatusId = e.DecorateStatusId
+                }).ToList();
+
+                var bs1 = new BaseService<T_IdNames>(db);
+                list.ForEach(e =>
+                {
+                    e.RoomTypeName = bs1.Get(a => a.Id == e.RoomTypeId).Name;
+                    e.DecorateStatusName = bs1.Get(a => a.Id == e.RoomTypeId).Name;
+                });
+
+                return list;
+            }
+        }
     }
 }
