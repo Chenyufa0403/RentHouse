@@ -42,7 +42,7 @@ namespace HPIT.RentHouse.Web.Controllers
             {
                 if (!string.IsNullOrEmpty(item.FirstThumbUrl))
                 {
-                    //item.FirstThumbUrl = CommonHelper.GetServerIP() + item.FirstThumbUrl;
+                    item.FirstThumbUrl = CommonHelper.GetServerIP() + item.FirstThumbUrl;
                 }
             }
             return Json(list);
