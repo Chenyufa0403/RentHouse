@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPIT.RentHouse.lService
+namespace HPIT.RentHouse.IService
 {
     public interface IHousesService : IServiceSupport
     {
@@ -73,5 +73,11 @@ namespace HPIT.RentHouse.lService
         /// <param name="options"></param>
         /// <returns></returns>
         List<HousesDTO> Search(HouseSearchOptions options);
+        /// <summary>
+        /// 房源详情
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        HouseDetailDTO GetHouseDetail(long id);
     }
 }

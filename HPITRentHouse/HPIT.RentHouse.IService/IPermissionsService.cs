@@ -1,12 +1,12 @@
-﻿using System;
+﻿using HPIT.RentHouse.Common;
+using HPIT.RentHouse.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HPIT.RentHouse.Common;
-using HPIT.RentHouse.DTO;
 
-namespace HPIT.RentHouse.lService
+namespace HPIT.RentHouse.IService
 {
     public interface IPermissionsService : IServiceSupport
     {

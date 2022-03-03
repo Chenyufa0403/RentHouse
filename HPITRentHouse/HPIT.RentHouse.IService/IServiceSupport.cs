@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPIT.RentHouse.lService
+namespace HPIT.RentHouse.IService
 {
     public interface IServiceSupport
     {
-        
     }
 }

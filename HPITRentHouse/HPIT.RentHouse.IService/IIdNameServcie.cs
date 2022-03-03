@@ -1,6 +1,5 @@
 ﻿using HPIT.RentHouse.Common;
 using HPIT.RentHouse.DTO;
-using HPIT.RentHouse.lService;
 using System;
 using System.Collections.Generic;
 using System.Linq;

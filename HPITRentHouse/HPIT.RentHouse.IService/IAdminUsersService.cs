@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPIT.RentHouse.lService
+namespace HPIT.RentHouse.IService
 {
-    public interface IAdminUsersService : IServiceSupport
+    public interface IAdminUsersService:IServiceSupport
     {
         /// <summary>
         /// 查询管理员

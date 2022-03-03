@@ -94,8 +94,8 @@
       <Project>{EC1C32FE-CE1D-4C02-A8EB-FF299A56B8EE}</Project>
       <Name>HPIT.RentHouse.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HPIT.RentHouse.lService\HPIT.RentHouse.IService.csproj">
-      <Project>{3281A6A8-BC7C-4D49-B49B-DA92BB444410}</Project>
+    <ProjectReference Include="..\HPIT.RentHouse.IService\HPIT.RentHouse.IService.csproj">
+      <Project>{b3040e65-d62f-4941-8622-136b8e0a74be}</Project>
       <Name>HPIT.RentHouse.IService</Name>
     </ProjectReference>
   </ItemGroup>

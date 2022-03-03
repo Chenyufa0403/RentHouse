@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HPIT.RentHouse.lService
+namespace HPIT.RentHouse.IService
 {
-    public interface IHouseAppointmentService : IServiceSupport
+    public interface IHouseAppointmentService:IServiceSupport
     {
         List<HouseAppointmentDTO> GetPageList(int start, int length, ref int totalCount);
 

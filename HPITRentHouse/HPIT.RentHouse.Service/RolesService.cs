@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using HPIT.RentHouse.lService;
+using HPIT.RentHouse.IService;
 
 namespace HPIT.RentHouse.Service
 {

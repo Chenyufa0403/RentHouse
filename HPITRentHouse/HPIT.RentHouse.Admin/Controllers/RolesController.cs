@@ -1,7 +1,7 @@
 ﻿using HPIT.RentHouse.Admin.Filters;
 using HPIT.RentHouse.Admin.Models;
 using HPIT.RentHouse.DTO;
-using HPIT.RentHouse.lService;
+using HPIT.RentHouse.IService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
