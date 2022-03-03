@@ -1,13 +1,15 @@
 ﻿@using HPIT.RentHouse.Common
 @using HPIT.RentHouse.DTO
 @model List<HousesDTO>
-@{ ViewBag.Title = "Search"; }
+@{
+    ViewBag.Title = "Search"; 
+}
 
 <script src="~/js/menu.js"></script>
 
 <div class="headertwo clearfloat" id="header">
     <a href="javascript:history.go(-1)" class="fl box-s"><i class="iconfont icon-arrow-l fl"></i></a>
-    <p class="fl">@ViewBag.DefaultCity </p>
+    <p class="fl">@ViewBag.DefaultCity</p>
     <a href="javascript:history.go(-1)" class="fr"><i class="iconfont icon-sousuo fl"></i></a>
 </div>
 <div class="clearfloat" id="main">
@@ -80,7 +82,7 @@
             </div>
         </div>
     </a>
-</div>            }
+</div>      }
 
         </div>
     </div>

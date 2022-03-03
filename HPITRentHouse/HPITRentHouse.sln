@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.Common", "HP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.DTO", "HPIT.RentHouse.DTO\HPIT.RentHouse.DTO.csproj", "{EC1C32FE-CE1D-4C02-A8EB-FF299A56B8EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.lService", "HPIT.RentHouse.lService\HPIT.RentHouse.lService.csproj", "{3281A6A8-BC7C-4D49-B49B-DA92BB444410}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.IService", "HPIT.RentHouse.lService\HPIT.RentHouse.IService.csproj", "{3281A6A8-BC7C-4D49-B49B-DA92BB444410}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.Service", "HPIT.RentHouse.Service\HPIT.RentHouse.Service.csproj", "{34E47533-41F7-4232-9E35-F5147956D8F5}"
 EndProject

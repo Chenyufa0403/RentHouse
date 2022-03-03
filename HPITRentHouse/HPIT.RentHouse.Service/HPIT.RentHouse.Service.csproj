@@ -94,9 +94,9 @@
       <Project>{EC1C32FE-CE1D-4C02-A8EB-FF299A56B8EE}</Project>
       <Name>HPIT.RentHouse.DTO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HPIT.RentHouse.lService\HPIT.RentHouse.lService.csproj">
+    <ProjectReference Include="..\HPIT.RentHouse.lService\HPIT.RentHouse.IService.csproj">
       <Project>{3281A6A8-BC7C-4D49-B49B-DA92BB444410}</Project>
-      <Name>HPIT.RentHouse.lService</Name>
+      <Name>HPIT.RentHouse.IService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

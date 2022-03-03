@@ -1,6 +1,5 @@
 ﻿using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.IService;
-using HPIT.RentHouse.lService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +32,7 @@ namespace HPIT.RentHouse.Web.Controllers
         public ActionResult Search(HouseSearchOptions options)
         {
             //默认城市
-            var cityList = _adminUsersService.GetList();
+            var cityList = _adminUsersService.CityList();
             options.CityId = cityList.FirstOrDefault().Id;
 
             ViewBag.DefaultCity = cityList.FirstOrDefault().Name;
@@ -59,6 +58,11 @@ namespace HPIT.RentHouse.Web.Controllers
 
             var list = _housesService.Search(options);
             return View(list);
+        }
+        public ActionResult Detail(int id)
+        {
+            var model = _housesService.GetHouseDetail(id);
+            return View(model);
         }
     }
 }
