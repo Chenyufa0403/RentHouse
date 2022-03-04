@@ -98,6 +98,10 @@
       <Project>{b3040e65-d62f-4941-8622-136b8e0a74be}</Project>
       <Name>HPIT.RentHouse.IService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HPIT.RentHouse.Redis\HPIT.RentHouse.Redis.csproj">
+      <Project>{83D1233B-0AAD-48CB-BA6C-AB4FD277CA31}</Project>
+      <Name>HPIT.RentHouse.Redis</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

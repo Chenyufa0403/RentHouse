@@ -1,6 +1,7 @@
 ﻿using HPIT.RentHouse.Common;
 using HPIT.RentHouse.DTO;
 using HPIT.RentHouse.IService;
+using HPIT.RentHouse.Redis;
 using HPIT.RentHouse.Service.Entities;
 using System;
 using System.Collections.Generic;
@@ -416,108 +417,108 @@ namespace HPIT.RentHouse.Service
         /// <returns></returns>
         public HouseDetailDTO GetHouseDetail(long id)
         {
-            //using (var db = new RentHouseEntity())
-            //{
-            //    var bs = new BaseService<T_Houses>(db);
+            using (var db = new RentHouseEntity())
+            {
+                var bs = new BaseService<T_Houses>(db);
 
-            //    //根据id先从redis中查询，如果redis中有数据则直接返回redis中的数据
-            //    RedisHelper redis = new RedisHelper();
-            //    var dtoRedis = redis.HashGet<HouseDetailDTO>("housedetail", id.ToString());
-            //    if (dtoRedis != null)
-            //        return dtoRedis;
+                //根据id先从redis中查询，如果redis中有数据则直接返回redis中的数据
+                RedisHelper redis = new RedisHelper();
+                var dtoRedis = redis.HashGet<HouseDetailDTO>("housedetail", id.ToString());
+                if (dtoRedis != null)
+                    return dtoRedis;
 
-            //    var bsIdNames = new BaseService<T_IdNames>(db);
-            //    //否则再读取数据库中的数据，并且添加到redis中
-            //    var model = bs.Get(e => e.Id == id);
-            //    if (model != null)
-            //    {
-            //        var dto = new HouseDetailDTO()
-            //        {
-            //            Address = model.Address,
-            //            Area = model.Area,
-            //            CommunityName = model.T_Communities.Name,
-            //            Id = model.Id,
-            //            MonthRent = model.MonthRent,
-            //            RegionName = model.T_Communities.T_Regions.Name,
-            //            LocationName = model.T_Communities.Location,
-            //            RoomTypeName = bsIdNames.Get(a => a.Id == model.RoomTypeId).Name,
-            //            DecorateStatusName = bsIdNames.Get(a => a.Id == model.DecorateStatusId).Name,
-            //            TypeName = bsIdNames.Get(a => a.Id == model.TypeId).Name,
-            //            CheckInDateTime = model.CheckInDateTime,
-            //            CommunityBuiltYear = (int)model.T_Communities.BuiltYear,
-            //            Direction = model.Direction,
-            //            FloorIndex = model.FloorIndex,
-            //            LookableDateTime = model.LookableDateTime,
-            //            TotalFloorCount = model.TotalFloorCount,
-            //            StatusName = bsIdNames.Get(a => a.Id == model.StatusId).Name,
-            //            CommunityTraffic = model.T_Communities.Traffic,
-            //            Description = model.Description
+                var bsIdNames = new BaseService<T_IdNames>(db);
+                //否则再读取数据库中的数据，并且添加到redis中
+                var model = bs.Get(e => e.Id == id);
+                if (model != null)
+                {
+                    var dto = new HouseDetailDTO()
+                    {
+                        Address = model.Address,
+                        Area = model.Area,
+                        CommunityName = model.T_Communities.Name,
+                        Id = model.Id,
+                        MonthRent = model.MonthRent,
+                        RegionName = model.T_Communities.T_Regions.Name,
+                        LocationName = model.T_Communities.Location,
+                        RoomTypeName = bsIdNames.Get(a => a.Id == model.RoomTypeId).Name,
+                        DecorateStatusName = bsIdNames.Get(a => a.Id == model.DecorateStatusId).Name,
+                        TypeName = bsIdNames.Get(a => a.Id == model.TypeId).Name,
+                        CheckInDateTime = model.CheckInDateTime,
+                        CommunityBuiltYear = (int)model.T_Communities.BuiltYear,
+                        Direction = model.Direction,
+                        FloorIndex = model.FloorIndex,
+                        LookableDateTime = model.LookableDateTime,
+                        TotalFloorCount = model.TotalFloorCount,
+                        StatusName = bsIdNames.Get(a => a.Id == model.StatusId).Name,
+                        CommunityTraffic = model.T_Communities.Traffic,
+                        Description = model.Description
 
-            //        };
+                    };
 
-            //        //配置设施
-            //        dto.Attachments = new List<AttachmentDTO>();
+                    //配置设施
+                    dto.Attachments = new List<AttachmentDTO>();
 
-            //        foreach (var item in model.T_Attachments)
-            //        {
-            //            var attachment = new AttachmentDTO()
-            //            {
-            //                IconName = item.IconName,
-            //                Id = item.Id,
-            //                Name = item.Name
-            //            };
+                    foreach (var item in model.T_Attachments)
+                    {
+                        var attachment = new AttachmentDTO()
+                        {
+                            IconName = item.IconName,
+                            Id = item.Id,
+                            Name = item.Name
+                        };
 
-            //            dto.Attachments.Add(attachment);
-            //        }
+                        dto.Attachments.Add(attachment);
+                    }
 
-            //        //房源图片
-            //        dto.HousePics = new List<HousePicDTO>();
+                    //房源图片
+                    dto.HousePics = new List<HousePicDTO>();
 
-            //        var bsHousePic = new BaseService<T_HousePics>(db);
+                    var bsHousePic = new BaseService<T_HousePics>(db);
 
-            //        var picList = bsHousePic.GetList(e => e.HouseId == id && e.IsDeleted == false).ToList();
-            //        picList.ForEach(e =>
-            //        {
-            //            var housePic = new HousePicDTO()
-            //            {
+                    var picList = bsHousePic.GetList(e => e.HouseId == id && e.IsDeleted == false).ToList();
+                    picList.ForEach(e =>
+                    {
+                        var housePic = new HousePicDTO()
+                        {
 
-            //                HouseId = e.HouseId,
-            //                Id = e.Id,
-            //                ThumbUrl = e.ThumbUrl,
-            //                Url = e.Url
-            //            };
+                            HouseId = e.HouseId,
+                            Id = e.Id,
+                            ThumbUrl = e.ThumbUrl,
+                            Url = e.Url
+                        };
 
-            //            dto.HousePics.Add(housePic);
-            //        });
+                        dto.HousePics.Add(housePic);
+                    });
 
 
-            //        //相似房源
-            //        //与当前房源在同一个小区的，认为是相似房源
-            //        dto.OtherHouses = bs.GetList(e => e.CommunityId == model.CommunityId).Take(3).Select(e => new HousesDTO()
-            //        {
-            //            Id = e.Id,
-            //            Area = e.Area,
-            //            CommunityName = e.T_Communities.Name,
-            //            MonthRent = e.MonthRent,
-            //            FirstThumbUrl = e.T_HousePics.Where(a => !a.IsDeleted).FirstOrDefault().ThumbUrl,
-            //            RoomTypeId = e.RoomTypeId,
-            //            DecorateStatusId = e.DecorateStatusId
-            //        }).ToList();
+                    //相似房源
+                    //与当前房源在同一个小区的，认为是相似房源
+                    dto.OtherHouses = bs.GetList(e => e.CommunityId == model.CommunityId).Take(3).Select(e => new HousesDTO()
+                    {
+                        Id = e.Id,
+                        Area = e.Area,
+                        CommunityName = e.T_Communities.Name,
+                        MonthRent = e.MonthRent,
+                        FirstThumbUrl = e.T_HousePics.Where(a => !a.IsDeleted).FirstOrDefault().ThumbUrl,
+                        RoomTypeId = e.RoomTypeId,
+                        DecorateStatusId = e.DecorateStatusId
+                    }).ToList();
 
-            //        dto.OtherHouses.ForEach(e =>
-            //        {
-            //            e.RoomTypeName = bsIdNames.Get(a => a.Id == model.RoomTypeId).Name;
-            //            e.DecorateStatusName = bsIdNames.Get(a => a.Id == model.DecorateStatusId).Name;
-            //        });
+                    dto.OtherHouses.ForEach(e =>
+                    {
+                        e.RoomTypeName = bsIdNames.Get(a => a.Id == model.RoomTypeId).Name;
+                        e.DecorateStatusName = bsIdNames.Get(a => a.Id == model.DecorateStatusId).Name;
+                    });
 
-            //        //向redis中写入当前房源信息的数据
-            //        redis.HashSet<HouseDetailDTO>("housedetail", id.ToString(), dto);
+                    //向redis中写入当前房源信息的数据
+                    redis.HashSet<HouseDetailDTO>("housedetail", id.ToString(), dto);
 
-            //        return dto;
+                    return dto;
 
-            //    }
+                }
                 return null;
-            //}
+            }
         }
     }
 }

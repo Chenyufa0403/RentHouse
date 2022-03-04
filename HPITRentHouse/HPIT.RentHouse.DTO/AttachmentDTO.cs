@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HPIT.RentHouse.DTO
 {
+    [Serializable]
     public class AttachmentDTO
     {
         public long Id { get; set; }

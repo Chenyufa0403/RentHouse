@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.Web", "HPIT.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.IService", "HPIT.RentHouse.IService\HPIT.RentHouse.IService.csproj", "{B3040E65-D62F-4941-8622-136B8E0A74BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HPIT.RentHouse.Redis", "HPIT.RentHouse.Redis\HPIT.RentHouse.Redis.csproj", "{83D1233B-0AAD-48CB-BA6C-AB4FD277CA31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{B3040E65-D62F-4941-8622-136B8E0A74BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3040E65-D62F-4941-8622-136B8E0A74BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3040E65-D62F-4941-8622-136B8E0A74BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D1233B-0AAD-48CB-BA6C-AB4FD277CA31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D1233B-0AAD-48CB-BA6C-AB4FD277CA31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D1233B-0AAD-48CB-BA6C-AB4FD277CA31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D1233B-0AAD-48CB-BA6C-AB4FD277CA31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
