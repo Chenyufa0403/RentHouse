@@ -142,6 +142,10 @@ namespace HPIT.RentHouse.Service
             var db = new RentHouseEntity();
             BaseService<T_Roles> bs = new BaseService<T_Roles>(db);
             var model = bs.Get(r => r.Id == id);
+            if (model==null)
+            {
+                return new AjaxResult(ResultState.Error, "角色不存在");
+            }
             if (bs.Delete(model))
             {
                 return new AjaxResult(ResultState.Success, "角色删除成功");

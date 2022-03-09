@@ -196,6 +196,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\RoleParaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -251,7 +252,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -283,6 +283,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HPIT.RentHouse.Admin\HPIT.RentHouse.Admin.csproj">
+      <Project>{1452D2ED-F1A7-403D-A6E6-4F42DE40C235}</Project>
+      <Name>HPIT.RentHouse.Admin</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HPIT.RentHouse.Common\HPIT.RentHouse.Common.csproj">
       <Project>{35227a52-8fc8-48e9-abc9-eb7bf6c6eb24}</Project>
       <Name>HPIT.RentHouse.Common</Name>
