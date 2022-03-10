@@ -82,7 +82,7 @@ namespace HPIT.RentHouse.WebApi.Controllers
             return result;
         }
         [HttpPost]
-        public AjaxResult DeleteBatch([FromBody]List<long> ids)
+        public AjaxResult DeleteBatch([FromBody] List<long> ids)
         {
             RolesService rolesService = new RolesService();
             var result = rolesService.DeleteBatch(ids);
