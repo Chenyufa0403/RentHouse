@@ -78,6 +78,9 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -190,12 +193,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\RoleParaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -249,6 +253,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,10 +288,6 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HPIT.RentHouse.Admin\HPIT.RentHouse.Admin.csproj">
-      <Project>{1452D2ED-F1A7-403D-A6E6-4F42DE40C235}</Project>
-      <Name>HPIT.RentHouse.Admin</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HPIT.RentHouse.Common\HPIT.RentHouse.Common.csproj">
       <Project>{35227a52-8fc8-48e9-abc9-eb7bf6c6eb24}</Project>
       <Name>HPIT.RentHouse.Common</Name>
@@ -294,6 +295,10 @@
     <ProjectReference Include="..\HPIT.RentHouse.DTO\HPIT.RentHouse.DTO.csproj">
       <Project>{EC1C32FE-CE1D-4C02-A8EB-FF299A56B8EE}</Project>
       <Name>HPIT.RentHouse.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HPIT.RentHouse.IService\HPIT.RentHouse.IService.csproj">
+      <Project>{b3040e65-d62f-4941-8622-136b8e0a74be}</Project>
+      <Name>HPIT.RentHouse.IService</Name>
     </ProjectReference>
     <ProjectReference Include="..\HPIT.RentHouse.Service\HPIT.RentHouse.Service.csproj">
       <Project>{34e47533-41f7-4232-9e35-f5147956d8f5}</Project>

@@ -6,12 +6,11 @@ using System.Web.Mvc;
 
 namespace HPIT.RentHouse.WebApi.Controllers
 {
-    public class HomeController : Controller
+    public class DefaultController : Controller
     {
+        // GET: Default
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
     }

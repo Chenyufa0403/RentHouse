@@ -1,5 +1,4 @@
-﻿using HPIT.RentHouse.Admin.Models;
-using HPIT.RentHouse.Common;
+﻿using HPIT.RentHouse.Common;
 using HPIT.RentHouse.Service;
 using System;
 using System.Collections.Generic;
@@ -83,7 +82,7 @@ namespace HPIT.RentHouse.WebApi.Controllers
             return result;
         }
         [HttpPost]
-        public AjaxResult DeleteBatch(List<long> ids)
+        public AjaxResult DeleteBatch([FromBody]List<long> ids)
         {
             RolesService rolesService = new RolesService();
             var result = rolesService.DeleteBatch(ids);
